@@ -5,10 +5,10 @@ import { UserProfileApiResponse } from './player-data-type';
 import PlayerInfoSkeleton from './profile-info-skeleton';
 import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
 
-const DefensiveStats = ({ id }: { id: string }) => {
+const AttackingStats = ({ id }: { id: string }) => {
 
     const { data, isLoading, isError, error } = useQuery<UserProfileApiResponse>({
-        queryKey: ["defensive-stats", id],
+        queryKey: ["attacking-stats", id],
         queryFn: async () => {
             const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/detail/${id}`)
             return res.json();
@@ -32,7 +32,7 @@ const DefensiveStats = ({ id }: { id: string }) => {
         <div className='py-6'>
             <div className="container  bg-white rounded-[16px] p-6 shadow-[0px_4px_24px_0px_#00000014
 ]">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl text-primary font-normal leading-[120%] pb-5 md:pb-6">Defensive Stats</h3>
+                <h3 className="text-2xl md:text-3xl lg:text-4xl text-primary font-normal leading-[120%] pb-5 md:pb-6">Attacking Stats</h3>
                 <div>
                     {
                         personalInfo?.map((info) => {
@@ -76,4 +76,4 @@ const DefensiveStats = ({ id }: { id: string }) => {
     )
 }
 
-export default DefensiveStats
+export default AttackingStats

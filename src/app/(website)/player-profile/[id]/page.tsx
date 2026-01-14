@@ -4,6 +4,9 @@ import PlayerRating from './_components/player-rating'
 import GroundField from './_components/ground-field'
 import HighlightsVideo from './_components/highlights-video'
 import DefensiveStats from './_components/defensive-stats'
+import Fouls from './_components/fouls'
+import NationalTeam from './_components/national-team-career'
+// import AttackingStats from './_components/attacking-stats'
 
 interface PlayerProfilePageProps {
   params: { id: string }
@@ -22,15 +25,38 @@ const PlayerProfilePage = ({ params }: PlayerProfilePageProps) => {
         </div>
       </div>
 
-      {/* highlight video  */}
+
+      {/* national team */}
       <section>
-        <HighlightsVideo id={params?.id}/>
+        <NationalTeam id={params?.id} />
       </section>
+
+
 
 
       {/* defensive stats section  */}
       <section>
-        <DefensiveStats id={params?.id}/>
+        <DefensiveStats id={params?.id} />
+      </section>
+
+      {/* Attacking stats section  */}
+      {/* <section>
+        <AttackingStats id={params?.id}/>
+      </section> */}
+
+      {/* defensive stats section  */}
+      <section>
+        <Fouls id={params?.id} />
+      </section>
+
+      {/* defensive stats section  */}
+      {/* <section>
+        <DefensiveStats id={params?.id} />
+      </section> */}
+
+      {/* highlight video  */}
+      <section>
+        <HighlightsVideo id={params?.id} />
       </section>
 
     </div>
