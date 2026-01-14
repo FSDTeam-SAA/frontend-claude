@@ -322,15 +322,20 @@ export default function VideoUpload({ videos }: { videos: string[] }) {
       return res.json()
     },
     onMutate: () => setUploading(true),
-    onSuccess: () => {
+    onSuccess: (data) => {
+      if(!data?.success){
+        toast.error(data?.message || "Video uploaded Failed")
+        setUploading(false)
+        return;
+      }
+      toast.success(data?.message || "Video Uploaded")
       queryClient.invalidateQueries({ queryKey: ["user-profile"] })
-      setUploading(false)
-      toast.success("Video uploaded")
+      
     },
-    onError: () => {
-      setUploading(false)
-      toast.error("Upload failed")
-    },
+    // onError: () => {
+    //   setUploading(false)
+    //   toast.error("Upload failed")
+    // },
   })
 
   const handleSelectVideos = (e: React.ChangeEvent<HTMLInputElement>) => {

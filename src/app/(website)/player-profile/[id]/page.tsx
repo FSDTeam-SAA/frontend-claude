@@ -2,6 +2,8 @@ import React from 'react'
 import PlayerInfo from './_components/player-info'
 import PlayerRating from './_components/player-rating'
 import GroundField from './_components/ground-field'
+import HighlightsVideo from './_components/highlights-video'
+import DefensiveStats from './_components/defensive-stats'
 
 interface PlayerProfilePageProps {
   params: { id: string }
@@ -19,6 +21,18 @@ const PlayerProfilePage = ({ params }: PlayerProfilePageProps) => {
           <GroundField />
         </div>
       </div>
+
+      {/* highlight video  */}
+      <section>
+        <HighlightsVideo id={params?.id}/>
+      </section>
+
+
+      {/* defensive stats section  */}
+      <section>
+        <DefensiveStats id={params?.id}/>
+      </section>
+
     </div>
   )
 }

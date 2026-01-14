@@ -17,7 +17,7 @@ const PlayerInfo = ({ id }: { id: string }) => {
     const { data, isLoading, isError, error } = useQuery<UserProfileApiResponse>({
         queryKey: ["profile-info", id],
         queryFn: async () => {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/detail/${id}`, {
                 method: "GET",
                 // headers: {
                 //     Authorization: `Bearer ${token}`
@@ -40,7 +40,8 @@ const PlayerInfo = ({ id }: { id: string }) => {
         </div>
     }
 
-    const personalInfo = data?.data;
+    const personalInfo = data?.data?.user;
+    console.log(personalInfo)
     return (
         <div className='py-6'>
             <div className="container grid grid-cols-1 md:gris-cols-2 lg:grid-cols-5 gap-6 bg-white rounded-[16px] p-6 shadow-[0px_4px_24px_0px_#00000014

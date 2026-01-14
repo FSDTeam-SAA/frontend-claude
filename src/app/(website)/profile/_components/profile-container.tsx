@@ -32,6 +32,7 @@ const ProfileContainer = () => {
   }
 
   const user = data?.data?.user
+  // console.log(data)
 
   return (
     <div className="py-8 md:py-12 lg:py-16">
@@ -47,6 +48,7 @@ const ProfileContainer = () => {
           </h1>
           <PersonalInformationForm user={user} />
         </div>
+
       </div>
     </div>
   )
