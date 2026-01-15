@@ -384,7 +384,7 @@ const Navbar = () => {
             </Link>
 
             {/* Search Box - Desktop */}
-            <div className="hidden lg:block flex-1 max-w-sm mx-5">
+            <div className="hidden lg:block flex-1 max-w-sm mx-1">
               <SearchBox baseUrl={BASE_URL} />
             </div>
 
@@ -392,7 +392,7 @@ const Navbar = () => {
             <div className="hidden md:flex items-center gap-8">
               <Link
                 href="/"
-                className={`text-sm md:text-base hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/" ? "border-b-[2px] border-primary" : "border-0"
+                className={`text-sm md:text-[15px] hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/" ? "border-b-[2px] border-primary" : "border-0"
                   }`}
               >
                 Home
@@ -400,7 +400,7 @@ const Navbar = () => {
 
                <Link
                 href="/services"
-                className={`text-sm md:text-base hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/contact-us" ? "border-b-[2px] border-primary" : "border-0"
+                className={`text-sm md:text-[15px] hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/contact-us" ? "border-b-[2px] border-primary" : "border-0"
                   }`}
               >
                 Services
@@ -408,18 +408,26 @@ const Navbar = () => {
 
                <Link
                 href="/profiles"
-                className={`text-sm md:text-base hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/contact-us" ? "border-b-[2px] border-primary" : "border-0"
+                className={`text-sm md:text-[15px] hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/contact-us" ? "border-b-[2px] border-primary" : "border-0"
                   }`}
               >
                 Profiles
               </Link>
 
-               <Link
+               {/* <Link
                 href="/player-evaluation-program"
                 className={`text-sm md:text-base hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/contact-us" ? "border-b-[2px] border-primary" : "border-0"
                   }`}
               >
                 Player Evaluation Program
+              </Link> */}
+
+              <Link
+                href="/analytic-soccer-coming-soon"
+                className={`text-sm md:text-[15px] hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/contact-us" ? "border-b-[2px] border-primary" : "border-0"
+                  }`}
+              >
+                Analytic Soccer + Coming Soon
               </Link>
               
               {/* Services Dropdown - Desktop */}
@@ -460,7 +468,7 @@ const Navbar = () => {
 
               <Link
                 href="/prices"
-                className={`text-sm md:text-base hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/prices" ? "border-b-[2px] border-primary" : "border-0"
+                className={`text-sm md:text-[15px] hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/prices" ? "border-b-[2px] border-primary" : "border-0"
                   }`}
               >
                 Prices
@@ -469,7 +477,7 @@ const Navbar = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="hidden sm:flex items-center gap-6 flex-shrink-0">
+            <div className="hidden sm:flex items-center gap-4 flex-shrink-0">
               {status === "authenticated" && user ? (
                 <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
                   <DropdownMenuTrigger>
@@ -511,7 +519,7 @@ const Navbar = () => {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="h-[48px] text-base text-[#131313] font-normal leading-[150%] border-[2px] border-[#131313] py-2 px-8 rounded-full"
+                      className="h-[44px] text-base text-[#131313] font-normal leading-[150%] border-[2px] border-[#131313] py-2 px-5 rounded-full"
                     >
                       Sign In
                     </Button>
@@ -519,7 +527,7 @@ const Navbar = () => {
                   <Link href="/sign-up">
                     <Button
                       size="sm"
-                      className="h-[48px] py-2 px-8 rounded-full bg-primary hover:bg-primary/90 text-white text-base font-normal leading-[150%] "
+                      className="h-[44px] py-2 px-5 rounded-full bg-primary hover:bg-primary/90 text-white text-base font-normal leading-[150%] "
                     >
                       Register
                     </Button>
@@ -598,12 +606,20 @@ const Navbar = () => {
               >
                 Profiles
               </Link>
-                <Link
+                {/* <Link
                 href="/player-evaluation-program"
                 className={`w-fit text-sm md:text-base hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/contact-us" ? "border-b-[2px] border-primary" : "border-0"
                   }`}
               >
                 Player Evaluation Program
+              </Link> */}
+
+              <Link
+                href="/analytic-soccer-coming-soon"
+                className={`w-fit text-sm md:text-base hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/contact-us" ? "border-b-[2px] border-primary" : "border-0"
+                  }`}
+              >
+                Analytic Soccer + Coming Soon
               </Link>
 
               <Link
