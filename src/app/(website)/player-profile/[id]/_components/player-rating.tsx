@@ -66,10 +66,10 @@ const CustomBarLabel: React.FC<LabelProps> = ({
 
 const chartData: PlayerRatingData[] = [
   { month: "15/05/2025", desktop: 9 },
-  { month: "15/05/2025", desktop: 5.8 },
-  { month: "15/05/2025", desktop: 7.3 },
-  { month: "15/05/2025", desktop: 8 },
-  { month: "15/05/2025", desktop: 9.2 },
+  { month: "17/05/2025", desktop: 5.8 },
+  { month: "19/05/2025", desktop: 7.3 },
+  { month: "20/05/2025", desktop: 8 },
+  { month: "25/05/2025", desktop: 9.2 },
 ]
 
 /* =============================
