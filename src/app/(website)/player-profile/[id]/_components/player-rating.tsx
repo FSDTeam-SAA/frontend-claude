@@ -65,11 +65,11 @@ const CustomBarLabel: React.FC<LabelProps> = ({
 ============================= */
 
 const chartData: PlayerRatingData[] = [
-  { month: "January", desktop: 9 },
-  { month: "February", desktop: 5.8 },
-  { month: "March", desktop: 7.3 },
-  { month: "April", desktop: 8 },
-  { month: "May", desktop: 9.2 },
+  { month: "15/05/2025", desktop: 9 },
+  { month: "15/05/2025", desktop: 5.8 },
+  { month: "15/05/2025", desktop: 7.3 },
+  { month: "15/05/2025", desktop: 8 },
+  { month: "15/05/2025", desktop: 9.2 },
 ]
 
 /* =============================
@@ -105,7 +105,7 @@ const PlayerRating: React.FC = () => {
                 tickLine={false}
                 tickMargin={10}
                 axisLine={false}
-                tickFormatter={(value: string) => value.slice(0, 3)}
+                tickFormatter={(value: string) => value.slice(0, 10)}
               />
 
               <ChartTooltip

@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
 
-const AnalyticSoccerPage = () => {
+const AnalyticSoccer = () => {
   return (
-    <div className="bg-[#CDFFCD] py-10 md:py-16 lg:py-40 xl:py-60">
+    <div className="bg-[#CDFFCD] py-10 md:py-16 lg:py-20">
         <div className="container grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="md:col-span-1 h-full flex flex-col justify-center">
                 <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black leading-[150%] pb-2 md:pb-5 lg:pb-6">Analytic Soccer + Coming Soon</h3>
@@ -27,4 +27,4 @@ const AnalyticSoccerPage = () => {
   )
 }
 
-export default AnalyticSoccerPage
+export default AnalyticSoccer
