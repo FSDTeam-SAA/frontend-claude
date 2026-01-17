@@ -1,0 +1,93 @@
+"use client"
+import { useQuery } from '@tanstack/react-query'
+import React from 'react'
+import { UserProfileApiResponse } from './player-data-type';
+import PlayerInfoSkeleton from './profile-info-skeleton';
+import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
+import moment from 'moment';
+
+const LastPlayerReport = ({ id }: { id: string }) => {
+
+    const { data, isLoading, isError, error } = useQuery<UserProfileApiResponse>({
+        queryKey: ["last-player-report", id],
+        queryFn: async () => {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/detail/${id}`)
+            return res.json();
+        },
+    })
+
+    console.log(data)
+
+    if (isLoading) {
+        return <div className="pb-8">
+            <PlayerInfoSkeleton />
+        </div>
+    } else if (isError) {
+        return <div className='py-8'>
+            <ErrorContainer message={error?.message || "Something went wrong!"} />
+        </div>
+    }
+
+    const personalInfo = data?.data?.reports;
+    return (
+        <div className='pb-6'>
+            <div className="container  bg-white rounded-[16px] p-6 shadow-[0px_4px_24px_0px_#00000014
+]">
+                <h3 className="text-2xl md:text-3xl lg:text-4xl text-primary font-normal leading-[120%] pb-5 md:pb-6">Last Player Report</h3>
+                <div>
+                    {
+                        personalInfo?.map((info) => {
+                            return <div key={info?._id}>
+                                <ul  className="grid grid-cols-1 md:gris-cols-2 lg:grid-cols-4 gap-6">
+
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Freekicks</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{moment(info?.date || "N/A")?.format("DD / MM / YYYY")}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Freekicks Shots
+                                </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.category || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Free kicks Shots on Target</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.gameTitle || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Penalty Kicks 
+                                </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.rating || "N/A"}</span></li>
+
+                                     <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Free kicks Shots on Target</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.position?.join(", ") || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Penalty Kicks 
+                                </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.minutesPlayed || "N/A"}</span></li>
+
+                                
+
+                            </ul>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 pt-5">
+                                    <div>
+                                        <h4 className="text-xl md:text-2xl lg:text-3xl font-normal text-primary leading-[150%]">Defensive Summary</h4>
+                                        <p className="text-base md:text-lg text-[#131313] font-normal leading-[150%] pt-1">{info?.deFensiveSummary || "N/A"}</p>
+                                    </div>
+                                     <div>
+                                        <h4 className="text-xl md:text-2xl lg:text-3xl font-normal text-primary leading-[150%]">Strengths</h4>
+                                        <p className="text-base md:text-lg text-[#131313] font-normal leading-[150%] pt-1">{info?.strengths || "N/A"}</p>
+                                    </div>
+                                     <div>
+                                        <h4 className="text-xl md:text-2xl lg:text-3xl font-normal text-primary leading-[150%]">Offensive Summary</h4>
+                                        <p className="text-base md:text-lg text-[#131313] font-normal leading-[150%] pt-1">{info?.offensiveSummary || "N/A"}</p>
+                                    </div>
+                                     <div>
+                                        <h4 className="text-xl md:text-2xl lg:text-3xl font-normal text-primary leading-[150%]">Weaknesses</h4>
+                                        <p className="text-base md:text-lg text-[#131313] font-normal leading-[150%] pt-1">{info?.weaknesses || "N/A"}</p>
+                                    </div>
+                                     <div>
+                                        <h4 className="text-xl md:text-2xl lg:text-3xl font-normal text-primary leading-[150%]">Distribution Summary</h4>
+                                        <p className="text-base md:text-lg text-[#131313] font-normal leading-[150%] pt-1">{info?.distributionSummary || "N/A"}</p>
+                                    </div>
+                                     <div>
+                                        <h4 className="text-xl md:text-2xl lg:text-3xl font-normal text-primary leading-[150%]">General Comments</h4>
+                                        <p className="text-base md:text-lg text-[#131313] font-normal leading-[150%] pt-1">{info?.generalComments || "N/A"}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        )}
+                </div>
+
+            </div>
+        </div>
+    )
+}
+
+export default LastPlayerReport
