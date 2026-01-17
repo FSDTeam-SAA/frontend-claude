@@ -1,4 +1,6 @@
-export type UserRole = "player" | "gk" | "admin"
+export type UserRole = "admin" | "player" | "gk";
+export type AuthProvider = "credentials" | "google";
+
 
 export interface User {
   _id: string
@@ -6,7 +8,8 @@ export interface User {
   lastName: string
   email: string
   password: string
-  role: UserRole
+  role: UserRole;
+  provider: AuthProvider;
 
   profileImage: string
   verified: boolean
@@ -38,12 +41,15 @@ export interface User {
 
   league?: string | null
   category?: string | null
-  position?: string
+  position?: string[]
 
   inSchoolOrCollege?: boolean
   institute?: string
   gpa?: string
   satAct?: string
+
+    team?: string;
+  numberOfGame?: number;
 
   __v?: number
 }
@@ -54,14 +60,22 @@ export interface Meta {
   limit: number
 }
 
-
-export interface UsersApiResponse<T> {
+export interface UsersApiResponse {
   statusCode: number
   success: boolean
   message: string
   meta: Meta
-  data: T[]
+  data: User[]
 }
+
+
+// export interface UsersApiResponse<T> {
+//   statusCode: number
+//   success: boolean
+//   message: string
+//   meta: Meta
+//   data: T[]
+// }
 
 
 
