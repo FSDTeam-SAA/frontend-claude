@@ -427,7 +427,7 @@ const Navbar = () => {
                 className={`text-sm md:text-[15px] hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/contact-us" ? "border-b-[2px] border-primary" : "border-0"
                   }`}
               >
-                Analytic Soccer + Coming Soon
+                Analytic Soccer+ Coming Soon
               </Link>
               
               {/* Services Dropdown - Desktop */}
@@ -619,7 +619,7 @@ const Navbar = () => {
                 className={`w-fit text-sm md:text-base hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/contact-us" ? "border-b-[2px] border-primary" : "border-0"
                   }`}
               >
-                Analytic Soccer + Coming Soon
+                Analytic Soccer+ Coming Soon
               </Link>
 
               <Link

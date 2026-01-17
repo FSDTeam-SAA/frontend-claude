@@ -19,7 +19,7 @@ const AnalyticSoccer = () => {
 
                 <p className='text-sm md:text-base text-[#424242] font-normal leading-[150%]'>Parents and players receive ongoing feedback that helps them understand progress and areas to work on.</p>
                 <p className='text-sm md:text-base text-[#424242] font-normal leading-[150%] py-2 md:py-3'>The goal is to understand where your child is today and support their development step by step, at their own pace.</p>
-                <p className='text-sm md:text-base text-primary font-normal leading-[150%]'>Coming Soon 2026</p>
+                <p className='text-base md:text-lg lg:text-xl text-primary font-normal leading-[150%]'>Coming Soon 2026</p>
             </div>
             <div className="md:col-span-1">
                 <Image src="/assets/images/analytic-soccer.jpg" alt="Analytic Soccer Coming Soon" width={500} height={500} className='w-full h-[400px] md:h-[501px] rounded-[16px] object-cover'/>
