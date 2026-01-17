@@ -1,5 +1,6 @@
 import { Award, CircleCheckBig, Database, TrendingUp } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const WhyWeAreUnique = () => {
@@ -75,7 +76,9 @@ const WhyWeAreUnique = () => {
                         </ul>
                         {/* button  */}
                     <div className='w-full flex items-center justify-center'>
-                        <button className='h-[48px] py-3 px-12 rounded-full bg-primary text-white text-base md:text-lg leading-[120%] font-normal '>Buy Now</button>
+                       <Link href="/prices">
+                        <button className='h-[48px] px-12 rounded-full bg-primary text-white text-base md:text-lg leading-[120%] font-normal '>Buy Now</button>
+                       </Link>
                     </div>
                     </div>
                 </div>

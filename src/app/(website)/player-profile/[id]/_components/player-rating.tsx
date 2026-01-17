@@ -1,6 +1,7 @@
 "use client"
-
-import React from "react"
+import { useQuery } from '@tanstack/react-query'
+import React from 'react'
+import { UserProfileApiResponse } from './player-data-type';
 import {
   Bar,
   BarChart,
@@ -9,6 +10,9 @@ import {
   XAxis,
   type LabelProps,
 } from "recharts"
+
+import PlayerInfoSkeleton from './profile-info-skeleton';
+import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
 
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -22,10 +26,10 @@ import {
    Data Types
 ============================= */
 
-interface PlayerRatingData {
-  month: string
-  desktop: number
-}
+// interface PlayerRatingData {
+//   month: string
+//   desktop: number
+// }
 
 /* =============================
    Custom Label (Fully Typed)
@@ -61,18 +65,6 @@ const CustomBarLabel: React.FC<LabelProps> = ({
 }
 
 /* =============================
-   Chart Data
-============================= */
-
-const chartData: PlayerRatingData[] = [
-  { month: "15/05/2025", desktop: 9 },
-  { month: "17/05/2025", desktop: 5.8 },
-  { month: "19/05/2025", desktop: 7.3 },
-  { month: "20/05/2025", desktop: 8 },
-  { month: "25/05/2025", desktop: 9.2 },
-]
-
-/* =============================
    Chart Config
 ============================= */
 
@@ -87,7 +79,29 @@ const chartConfig = {
    Component
 ============================= */
 
-const PlayerRating: React.FC = () => {
+const PlayerRating = ({ id }: { id: string }) => {
+
+    const { data, isLoading, isError, error} = useQuery<UserProfileApiResponse>({
+        queryKey: ["ground-field", id],
+        queryFn: async () => {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/detail/${id}`)
+            return res.json();
+        },
+    })
+
+    console.log(data)
+
+    if (isLoading) {
+        return <div className="pb-8">
+            <PlayerInfoSkeleton />
+        </div>
+    } else if (isError) {
+        return <div className='py-8'>
+            <ErrorContainer message={error?.message || "Something went wrong!"} />
+        </div>
+    }
+
+    const ratingData = data?.data?.rating?.slice(0, 5);
   return (
     <div className="bg-white shadow-[0px_4px_16px_0px_#00000014] rounded-[16px] p-5">
       <h4 className="text-xl md:text-3xl lg:text-4xl font-normal leading-[120%] text-[#131313] pb-4">
@@ -97,11 +111,11 @@ const PlayerRating: React.FC = () => {
       <Card>
         <CardContent>
           <ChartContainer config={chartConfig} className="w-full h-[288px]">
-            <BarChart data={chartData} margin={{ top: 20 }}>
+            <BarChart data={ratingData} margin={{ top: 20 }}>
               <CartesianGrid vertical={false} />
 
               <XAxis
-                dataKey="month"
+                dataKey="createdAt"
                 tickLine={false}
                 tickMargin={10}
                 axisLine={false}
@@ -114,7 +128,7 @@ const PlayerRating: React.FC = () => {
               />
 
               <Bar
-                dataKey="desktop"
+                dataKey="rating"
                 fill="var(--color-desktop)"
                 radius={8}
               >

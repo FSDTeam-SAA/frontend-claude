@@ -99,7 +99,7 @@ const PlayerInfo = ({ id }: { id: string }) => {
                 <div className="md:col-span-1">
                     <RatingCard averageRating={7.8} totalGames={2} />
 
-                    <div className="flex flex-col gap-6 pt-10 md:pt-12 lg:pt-16">
+                    <div className="flex flex-col gap-6 pt-6 md:pt-8 lg:pt-10">
                         <button className="w-full h-[40px] bg-primary flex items-center justify-center gap-2 rounded-full text-base font-normal leading-[120%]  text-white px-12 py-2">Share <Share2 className="text-white" /></button>
                         <button className="w-full h-[40px] bg-primary flex items-center justify-center gap-2 rounded-full text-base font-normal leading-[120%]  text-white px-12 py-2">Follow</button>
                     </div>

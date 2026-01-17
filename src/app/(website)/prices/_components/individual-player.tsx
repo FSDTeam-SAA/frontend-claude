@@ -7,16 +7,17 @@ import { useSession } from 'next-auth/react';
 
 const IndividualPlayer = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [subscriptionId, setSubscriptionId] = useState<string | null>(null);
     const session = useSession();
-    const token = (session?.data?.user as {accessToken:string})?.accessToken;
+    const token = (session?.data?.user as { accessToken: string })?.accessToken;
 
-    const {data} = useQuery<SubscriptionApiResponse>({
+    const { data } = useQuery<SubscriptionApiResponse>({
         queryKey: ["subscription-all"],
-        queryFn: async ()=>{
-            const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/subscription`,{
+        queryFn: async () => {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/subscription`, {
                 method: "GET",
                 headers: {
-                    Authorization : `Bearer ${token}`
+                    Authorization: `Bearer ${token}`
                 }
             })
             return res.json();
@@ -25,12 +26,12 @@ const IndividualPlayer = () => {
 
     console.log(data)
 
-const subscriptionData = data?.data?.filter(
-  (item) => item?.paymentType === "Individual"
-)
+    const subscriptionData = data?.data?.filter(
+        (item) => item?.paymentType === "Individual"
+    )
 
-console.log(subscriptionData)
- const subscriptionId = "695645ddf8fc385a2d079234"
+    console.log(subscriptionData)
+
 
     return (
         <div className="bg-[#EBEBEB] py-10 md:py-16 lg:py-24">
@@ -39,26 +40,26 @@ console.log(subscriptionData)
                 <p className='text-base text-[#424242] leading-[150%] font-normal text-center pt-4'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                 <div className='w-full flex items-center justify-center gap-6 pt-7 md:pt-9 lg:pt-12'>
                     {
-                        subscriptionData?.map((item)=>{
-                            return  <div key={item?._id} className="w-full md:w-1/3 border-[1.5px] border-[#1E3A8A] rounded-[16px]">
-                        <h4 className='bg-[#006600] rounded-t-[16px] text-lg md:text-xl lg:text-[22px] font-normal text-white leading-[120%] text-center py-6 md:py-8 lg:py-10'>{item?.description}</h4>
-                        <div className='pt-5 pb-6 md:pb-8 lg:pb-10 px-6 md:px-7 lg:px-8'>
-                            <h5 className="text-2xl md:text-3xl lg:text-4xl text-[#131313] text-center leading-[120%] font-bold pb-5">${item?.price}</h5>
-                            <button onClick={()=>setIsOpen(true)} className='w-full h-[51px] bg-[#424242] rounded-[8px] text-base text-white leading-[120%] font-medium '>Continue</button>
-                        </div>
+                        subscriptionData?.map((item) => {
+                            return <div key={item?._id} className="w-full md:w-1/3 border-[1.5px] border-[#1E3A8A] rounded-[16px]">
+                                <h4 className='bg-[#006600] rounded-t-[16px] text-lg md:text-xl lg:text-[22px] font-normal text-white leading-[120%] text-center py-6 md:py-8 lg:py-10'>{item?.description}</h4>
+                                <div className='pt-5 pb-6 md:pb-8 lg:pb-10 px-6 md:px-7 lg:px-8'>
+                                    <h5 className="text-2xl md:text-3xl lg:text-4xl text-[#131313] text-center leading-[120%] font-bold pb-5">${item?.price}</h5>
+                                    <button onClick={() => {setIsOpen(true); setSubscriptionId(item?._id)}} className='w-full h-[51px] bg-[#424242] rounded-[8px] text-base text-white leading-[120%] font-medium '>Continue</button>
+                                </div>
 
 
-                    </div>
+                            </div>
                         })
                     }
-                   
+
                 </div>
             </div>
 
             {/* modal open  */}
             {
-                isOpen && (
-                   <RegisterAsIndividualPlayerForm open={isOpen} onOpenChange={setIsOpen} subscriptionId={subscriptionId}/>
+                isOpen && subscriptionId && (
+                    <RegisterAsIndividualPlayerForm open={isOpen} onOpenChange={setIsOpen} subscriptionId={subscriptionId} />
                 )
             }
         </div>

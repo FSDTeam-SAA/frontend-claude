@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import Link from 'next/link'
 
 const HowOurAnalytics = () => {
     return (
@@ -48,7 +49,9 @@ const HowOurAnalytics = () => {
 
                     {/* button  */}
                     <div className='w-full flex items-center justify-center'>
-                        <button className='h-[48px] py-3 px-12 rounded-full bg-primary text-white text-base md:text-lg leading-[120%] font-normal '>Get Started</button>
+                        <Link href="/sign-up">
+                        <button className='h-[48px] px-12 rounded-full bg-primary text-white text-base md:text-lg leading-[120%] font-normal '>Get Started</button>
+                        </Link>
                     </div>
                 </div>
             </div>
