@@ -56,7 +56,7 @@ const TransferHistory = ({ id }: { id: string }) => {
                         <TableBody>
                             {
                                 personalInfo?.map((info) => {
-                                    return <TableRow key={info?._id} className="border-2 border-black">
+                                    return <TableRow key={info?._id} className="">
 
                                          <TableCell className="text-base text-[#131313] leading-[150%] font-normal py-3">{info?.season || "N/A"}</TableCell>
                                         <TableCell className="text-base text-[#131313] leading-[150%] font-normal py-3">{moment(info?.date).format("DD / MM / YYYY")}</TableCell>
