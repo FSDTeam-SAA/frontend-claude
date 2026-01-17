@@ -32,7 +32,7 @@ const ServiceData = () => {
 
                     <Link
                         href="/prices"
-                        className=""
+                        className="flex items-center justify-center"
                     >
                         <button className="w-[200px] md:w-[250px] h-[44px] md:h-[50px] lg:h-[56px] bg-white text-primary ease-in-out duration-200 transition-all py-3 px-5 md:px-6 rounded-full text-sm md:text-base lg:text-lg font-medium leading-[120%]">
                             Buy Your Data Now
