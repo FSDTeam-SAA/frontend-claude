@@ -1,47 +1,43 @@
-"use client"
-import { useQuery } from '@tanstack/react-query'
-// import { useSession } from 'next-auth/react';
+
 import Image from 'next/image';
 import moment from "moment";
 import React from 'react'
-import { UserProfileApiResponse } from './player-data-type';
 import { Share2 } from 'lucide-react'
 import RatingCard from './rating-card';
 import PlayerInfoSkeleton from './profile-info-skeleton';
 import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
+import { UserProfile } from './player-data-type';
 
-const PlayerInfo = ({ id }: { id: string }) => {
-    // const session = useSession();
-    // const token = (session?.data?.user as { accessToken: string })?.accessToken;
-
-    const { data, isLoading, isError, error } = useQuery<UserProfileApiResponse>({
-        queryKey: ["profile-info", id],
-        queryFn: async () => {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/detail/${id}`, {
-                method: "GET",
-                // headers: {
-                //     Authorization: `Bearer ${token}`
-                // }
-            })
-            return res.json();
-        },
-        // enabled: !!token
-    })
-
-    console.log(data)
+const PlayerInfo = ({
+    data,
+    isLoading,
+    error,
+    isError,
+}: {
+    data?: UserProfile
+    isLoading: boolean
+    error: unknown
+    isError: boolean
+}) => {
 
     if (isLoading) {
-        return <div className="pb-8">
+        return <div className="pt-0">
             <PlayerInfoSkeleton />
-        </div>
-    } else if (isError) {
-        return <div className='py-8'>
-            <ErrorContainer message={error?.message || "Something went wrong!"} />
         </div>
     }
 
-    const personalInfo = data?.data?.user;
-    console.log(personalInfo)
+    if (isError) {
+        const message =
+            error instanceof Error ? error.message : "Something went wrong!";
+        return <div className="py-8">
+            <ErrorContainer message={message} />
+        </div>
+    }
+
+    const personalInfo = data?.user;
+
+    if (!personalInfo) return null;
+    
     return (
         <div className='py-6'>
             <div className="container grid grid-cols-1 md:gris-cols-2 lg:grid-cols-5 gap-6 bg-white rounded-[16px] p-6 shadow-[0px_4px_24px_0px_#00000014
