@@ -36,8 +36,11 @@ const PlayerInfo = ({
 
     const personalInfo = data?.user;
 
+
     if (!personalInfo) return null;
-    
+
+    const averageRatings = data?.avarageRatting
+
     return (
         <div className='py-6'>
             <div className="container grid grid-cols-1 md:gris-cols-2 lg:grid-cols-5 gap-6 bg-white rounded-[16px] p-6 shadow-[0px_4px_24px_0px_#00000014
@@ -54,10 +57,10 @@ const PlayerInfo = ({
                                 Age
                             </span>
                             <span className="text-lg md:text-xl text-[#131313] font-normal leading-[120%]">
-  {personalInfo?.dob
-    ? `${moment(personalInfo.dob).format("DD MMM YYYY")} (${personalInfo.age || 0})`
-    : "N/A"}
-</span>
+                                {personalInfo?.dob
+                                    ? `${moment(personalInfo.dob).format("DD MMM YYYY")} (${personalInfo.age || 0})`
+                                    : "N/A"}
+                            </span>
 
                         </li>
 
@@ -96,7 +99,11 @@ const PlayerInfo = ({
                     </ul>
                 </div>
                 <div className="md:col-span-1">
-                    <RatingCard averageRating={7.8} totalGames={2} />
+                    <RatingCard
+                        averageRating={averageRatings?.averageRating ?? 0}
+                        totalGames={averageRatings?.gamesNumber ?? 0}
+                        stars={averageRatings?.stars ?? 0}
+                    />
 
                     <div className="flex flex-col gap-6 pt-6 md:pt-8 lg:pt-10">
                         <button className="w-full h-[40px] bg-primary flex items-center justify-center gap-2 rounded-full text-base font-normal leading-[120%]  text-white px-12 py-2">Share <Share2 className="text-white" /></button>

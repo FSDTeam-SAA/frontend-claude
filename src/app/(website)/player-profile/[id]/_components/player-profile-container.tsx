@@ -15,6 +15,7 @@ import { UserProfileApiResponse } from './player-data-type'
 import AttackingStats from './attacking-stats'
 import DistributionGkStats from './distribution-gk-stats'
 import DistributionPlayerStats from './distribution-player-stats'
+import SetPieces from './set-pieces'
 
 const PlayerProfileContainer = ({id}:{id:string}) => {
 
@@ -75,12 +76,16 @@ const PlayerProfileContainer = ({id}:{id:string}) => {
         {
           playerRole == "gk" ?  <DistributionGkStats data={data?.data } isLoading={isLoading} error={error} isError={isError}/> :  <DistributionPlayerStats data={data?.data } isLoading={isLoading} error={error} isError={isError}/>
         }
-        <DefensiveStats data={data?.data } isLoading={isLoading} error={error} isError={isError} />
       </section>
 
       {/* fouls section  */}
       <section>
         <Fouls data={data?.data } isLoading={isLoading} error={error} isError={isError} />
+      </section>
+
+      {/* set pieces section  */}
+      <section>
+        <SetPieces data={data?.data } isLoading={isLoading} error={error} isError={isError} />
       </section>
 
        {/* last player report section  */}

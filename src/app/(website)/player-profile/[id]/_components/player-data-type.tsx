@@ -20,6 +20,7 @@ export interface UserProfile {
   reports: Reports[]
   transferHistory: TransferHistory[]
   gkDistributionStats: GKDistributionStats[]
+  avarageRatting: AvarageRatting 
 }
 
 
@@ -270,6 +271,12 @@ export interface GKDistributionStats {
   __v: number
 }
 
+
+export interface AvarageRatting {
+  averageRating: number
+  gamesNumber: number
+  stars: number
+}
 
 
 

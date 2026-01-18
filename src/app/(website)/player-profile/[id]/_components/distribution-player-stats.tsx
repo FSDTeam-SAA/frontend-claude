@@ -30,7 +30,7 @@ const DistributionPlayerStats = ({
         </div>
     }
 
-    const personalInfo = data?.defensive;
+    const personalInfo = data?.distribution;
 
     if (!personalInfo) return null;
 
@@ -38,40 +38,42 @@ const DistributionPlayerStats = ({
         <div className='pb-6'>
             <div className="container  bg-white rounded-[16px] p-6 shadow-[0px_4px_24px_0px_#00000014
 ]">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl text-primary font-normal leading-[120%] pb-5 md:pb-6">Distribution Player Stats</h3>
+                <h3 className="text-2xl md:text-3xl lg:text-4xl text-primary font-normal leading-[120%] pb-5 md:pb-6">Distribution Stats</h3>
                 <div>
                     {
                         personalInfo?.map((info) => {
                             return <ul key={info?._id} className="grid grid-cols-1 md:gris-cols-2 lg:grid-cols-4 gap-6">
 
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Tackle Attempts</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.tackleAttempts || "N/A"}</span></li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Tackle Succeeded: Possession
-                                </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.tackleSucceededPossession || "N/A"}</span></li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Tackle Succeeded: No Possession</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.tackleSucceededNOPossession || "N/A"}</span></li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Tackle Failed
-                                </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.tackleFailed || "N/A"}</span></li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Turnover Won
-                                </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.turnoverwon || "N/A"}</span></li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Interceptions</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.interceptions || "N/A"}</span></li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Recoveries</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.recoveries || "N/A"}</span></li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Clearance</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.clearance || "N/A"}</span></li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Total Blocked</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.totalBlocked || "N/A"}</span></li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Shot Blocked
-                                </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.shotBlocked || "N/A"}</span></li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Cross Blocked</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.crossBlocked || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Passes</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.passes || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Passes in Final Third
+                                </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.passesinFinalThird || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Passes in Middle Third
+                                </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.passesinMiddleThird || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Passes in Defensive Third
+
+                                </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.passesinOerensiveThird || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Key Passes
+                                </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.kevPasses || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Long Passes</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.longPasses || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Medium Passes</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.mediumPasses || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Short Passes</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.shortPasses || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Passes Forward</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.passesForward || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Passes Sideways
+                                </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.passesSidewavs || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Passes Backward</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.passesBackward || "N/A"}</span></li>
                                 <li className="flex flex-col gap-2">
                                     <span className="text-base font-normal text-[#616161] leading-[150%]">
-                                        Mistakes
+                                        Passes Received
                                     </span>
                                     <span className="text-lg md:text-xl text-[#131313] font-normal leading-[120%]">
 
-                                        {info?.mistakes || "N/A"}
+                                        {info?.passesReceived || "N/A"}
                                     </span>
                                 </li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Aerial Duels</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.aerialDuels || "N/A"}</span></li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Physical Duels</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.phvsicalDuels || "N/A"}</span></li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Own Goals</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.ownGoals || "N/A"}</span></li>
-
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Crosses</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.crosses || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Step-in</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.stepIn || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Turnover Conceded</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.turnoverConceded || "N/A"}</span></li>
+                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Most Passes Player Between </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.mostPassesPlayerBetween || "N/A"}</span></li>
                             </ul>
                         }
                         )}

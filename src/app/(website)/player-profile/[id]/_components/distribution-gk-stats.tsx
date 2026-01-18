@@ -38,7 +38,7 @@ const DistributionGkStats = ({
         <div className='pb-6'>
             <div className="container  bg-white rounded-[16px] p-6 shadow-[0px_4px_24px_0px_#00000014
 ]">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl text-primary font-normal leading-[120%] pb-5 md:pb-6">Distribution GK Stats</h3>
+                <h3 className="text-2xl md:text-3xl lg:text-4xl text-primary font-normal leading-[120%] pb-5 md:pb-6">Distribution Stats</h3>
                 <div>
                     {
                         personalInfo?.map((info) => {
@@ -58,7 +58,7 @@ const DistributionGkStats = ({
                                 <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Passes Received
                                 </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.passesReceived || "N/A"}</span></li>
                                 <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Long Passes</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.longPasses || "N/A"}</span></li>
-                                
+
 
                             </ul>
                         }
