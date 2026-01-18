@@ -1,6 +1,5 @@
 
 import React from 'react'
-import PlayerInfoSkeleton from './profile-info-skeleton';
 import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
 import { UserProfile } from './player-data-type';
 import {
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/table"
 import moment from 'moment';
 import Image from 'next/image';
+import CommonSkeleton from './common-skeleton';
 
 const NationalTeam = ({
     data,
@@ -28,7 +28,7 @@ const NationalTeam = ({
 
     if (isLoading) {
         return <div className="pb-0">
-            <PlayerInfoSkeleton />
+            <CommonSkeleton />
         </div>
     }
 

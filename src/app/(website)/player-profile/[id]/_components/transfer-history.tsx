@@ -1,7 +1,6 @@
 
 import React from 'react'
 import { UserProfile } from './player-data-type';
-import PlayerInfoSkeleton from './profile-info-skeleton';
 import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
 import {
     Table,
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/table"
 import moment from 'moment';
 import Image from 'next/image';
+import CommonSkeleton from './common-skeleton';
 
 const TransferHistory = ({
     data,
@@ -28,7 +28,7 @@ const TransferHistory = ({
 
     if (isLoading) {
         return <div className="pb-0">
-            <PlayerInfoSkeleton />
+            <CommonSkeleton />
         </div>
     }
 

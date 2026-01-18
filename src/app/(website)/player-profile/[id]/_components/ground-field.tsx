@@ -3,8 +3,8 @@ import React from 'react'
 import Image from 'next/image'
 import { UserProfile } from './player-data-type';
 
-import PlayerInfoSkeleton from './profile-info-skeleton';
 import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
+import GroundFieldSkeleton from './ground-field-skeleton';
 
 const GroundField = ({
     data,
@@ -20,7 +20,7 @@ const GroundField = ({
 
     if (isLoading) {
         return <div className="pt-0">
-            <PlayerInfoSkeleton />
+            <GroundFieldSkeleton />
         </div>
     }
 

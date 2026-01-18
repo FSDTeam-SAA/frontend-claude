@@ -1,8 +1,8 @@
 
 import React from 'react'
 import { UserProfile } from './player-data-type';
-import PlayerInfoSkeleton from './profile-info-skeleton';
 import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
+import CommonSkeleton from './common-skeleton';
 
 const Fouls = ({
     data,
@@ -18,7 +18,7 @@ const Fouls = ({
 
     if (isLoading) {
         return <div className="pb-0">
-            <PlayerInfoSkeleton />
+            <CommonSkeleton />
         </div>
     }
 
