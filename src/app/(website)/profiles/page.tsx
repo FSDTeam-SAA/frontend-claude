@@ -3,7 +3,7 @@ import ProfilesContainer from './_components/profiles-container'
 
 const ProfilesPage = () => {
   return (
-    <div className="bg-[#CDFFCD] h-screen">
+    <div className="bg-[#CDFFCD] min-h-screen">
     <ProfilesContainer/>
     </div>
   )
