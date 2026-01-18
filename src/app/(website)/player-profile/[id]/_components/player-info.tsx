@@ -2,7 +2,15 @@
 import Image from 'next/image';
 import moment from "moment";
 import React from 'react'
-import { Share2 } from 'lucide-react'
+import {
+    Share2
+} from 'lucide-react'
+// import {
+//     Share2, Facebook,
+//     Instagram,
+//     Twitter,
+//     Youtube, Music, Globe
+// } from 'lucide-react'
 import RatingCard from './rating-card';
 import PlayerInfoSkeleton from './profile-info-skeleton';
 import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
@@ -19,6 +27,18 @@ const PlayerInfo = ({
     error: unknown
     isError: boolean
 }) => {
+
+    // const SOCIAL_ICON_MAP: Record<
+    //     typeof SOCIAL_MEDIA_OPTIONS[number],
+    //     React.ElementType
+    // > = {
+    //     Facebook: Facebook,
+    //     Instagram: Instagram,
+    //     Twitter: Twitter,
+    //     YouTube: Youtube,
+    //     TikTok: Music,
+    // };
+
 
     if (isLoading) {
         return <div className="py-0">
@@ -84,8 +104,71 @@ const PlayerInfo = ({
 
                         <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>GPA</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.gpa || "N/A"}</span></li>
 
+                        <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Jerssy Number</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.jerseyNumber || "N/A"}</span></li>
 
-                        {/* <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Social media</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.gpa || "N/A"}</span></li> */}
+                        <li className="flex flex-col gap-2">
+                            <span className='text-base font-normal text-[#616161] leading-[150%]'>
+                                Social Media
+                            </span>
+
+                            {personalInfo?.socialMedia && personalInfo.socialMedia.length > 0 ? (
+                                <div className="flex flex-col gap-1">
+                                    {personalInfo.socialMedia.map((item, index) => (
+                                        <a
+                                            key={item._id || index}
+                                            href={item.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-lg md:text-xl text-[#131313] font-normal leading-[120%] hover:underline"
+                                        >
+                                            {item.name}
+                                        </a>
+                                    ))}
+                                </div>
+                            ) : (
+                                <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%]'>
+                                    N/A
+                                </span>
+                            )}
+                        </li>
+
+                        {/* <li className="flex flex-col gap-2">
+                            <span className='text-base font-normal text-[#616161] leading-[150%]'>
+                                Social Media
+                            </span>
+
+                            {personalInfo?.socialMedia && personalInfo.socialMedia.length > 0 ? (
+                                <div className="flex flex-col gap-1">
+                                    {personalInfo.socialMedia.map((item, index) => {
+                                        const Icon =
+                                            SOCIAL_ICON_MAP[item.name as typeof SOCIAL_MEDIA_OPTIONS[number]] ??
+                                            Globe;
+
+                                        return (
+                                            <a
+                                                key={item._id || index}
+                                                href={item.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center gap-2 text-lg md:text-xl text-[#131313] font-normal leading-[120%] hover:underline"
+                                            >
+                                                <Icon className="w-5 h-5" />
+                                                <span>{item.name}</span>
+                                            </a>
+                                        );
+                                    })}
+                                </div>
+                            ) : (
+                                <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%]'>
+                                    N/A
+                                </span>
+                            )}
+                        </li> */}
+
+
+
+
+                        
 
 
 
