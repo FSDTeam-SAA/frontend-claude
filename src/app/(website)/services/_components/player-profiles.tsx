@@ -18,7 +18,7 @@ const PlayerProfiles = () => {
 
                     <Link
                         href="/profiles"
-                        className=""
+                        className="w-full flex items-center justify-center"
                     >
                         <button className="w-[200px] md:w-[250px] h-[44px] md:h-[50px] lg:h-[56px] bg-primary text-white ease-in-out duration-200 transition-all py-3 px-5 md:px-6 rounded-full text-sm md:text-base lg:text-lg font-medium leading-[120%] text-primary">
                             Go to Profils
