@@ -55,7 +55,7 @@ const formSchema = z.object({
     weight: z.string().min(2, {
         message: "Weight must be at least 2 characters.",
     }),
-    agencyName: z.string().optional(),
+    agent: z.string().optional(),
     social_media: z.string().optional(),
     citizenship: z.string().min(2, {
         message: "citizenship must be at least 2 characters.",
@@ -80,17 +80,36 @@ const formSchema = z.object({
         message: "Foot is required.",
     }),
 
-     position: z.array(z.string()).min(1, "Select at least one position").max(2, "Maximum 2 positions"),
+    position: z.array(z.string()).min(1, "Select at least one position").max(2, "Maximum 2 positions"),
     inSchoolOrCollege: z.enum(["yes", "no"], { message: "Please select if you are in school/college." }),
     institute: z.string().optional(),
     gpa: z.string().optional(),
 }).refine((data) => {
     if (data.inSchoolOrCollege === "yes") {
-        if (!data.institute || data.institute.trim().length < 2) return false
-        // if (!data.gpa || data.gpa.trim().length === 0) return false
+        if (!data.institute || data.institute.trim().length < 2) return false;
+
+        // GPA required for High School OR College / University
+        if (
+            data.institute === "high school" ||
+            data.institute === "college / university"
+        ) {
+            if (!data.gpa || data.gpa.trim().length === 0) return false;
+        }
     }
-    return true
-}, { message: "Institute Name and GPA required", path: ["institute"] })
+    return true;
+}, {
+    message: "GPA required for High School and College / University",
+    path: ["gpa"],
+})
+
+
+// .refine((data) => {
+//     if (data.inSchoolOrCollege === "yes") {
+//         if (!data.institute || data.institute.trim().length < 2) return false
+//         // if (!data.gpa || data.gpa.trim().length === 0) return false
+//     }
+//     return true
+// }, { message: "Institute Name and GPA required", path: ["institute"] })
 
 
 
@@ -105,16 +124,16 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
     const queryClient = useQueryClient();
 
     const POSITIONS = [
-  { label: "GK", value: "gk" },
-  { label: "RB", value: "rb" },
-  { label: "LB", value: "lb" },
-  { label: "CB", value: "cb" },
-  { label: "Defensive Midfielder", value: "defensive midfielder" },
-  { label: "Offensive Midfielder", value: "offensive midfielder" },
-  { label: "Right Winger", value: "right winger" },
-  { label: "Left Winger", value: "left winger" },
-  { label: "Striker", value: "striker" },
-]
+        { label: "GK", value: "gk" },
+        { label: "RB", value: "rb" },
+        { label: "LB", value: "lb" },
+        { label: "CB", value: "cb" },
+        { label: "Defensive Midfielder", value: "defensive midfielder" },
+        { label: "Offensive Midfielder", value: "offensive midfielder" },
+        { label: "Right Winger", value: "right winger" },
+        { label: "Left Winger", value: "left winger" },
+        { label: "Striker", value: "striker" },
+    ]
 
 
 
@@ -128,7 +147,7 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
             gender: user?.gender || "",
             hight: user?.hight || "",
             weight: user?.weight || "",
-            agencyName: user?.agent || "",
+            agent: user?.agent || "",
             social_media: Array.isArray(user?.socialMedia) ? user.socialMedia.join(", ") : "",
             citizenship: user?.citizenship || "",
             currentClub: user?.currentClub || "",
@@ -212,33 +231,33 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                 )}
                             />
                             <FormField
-                            control={form.control}
-                            name="gender"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">
-                                        Gender (boy - girl)
-                                    </FormLabel>
-                                    <FormControl>
-                                        <Select
-                                            onValueChange={field.onChange}
-                                            value={field.value}
-                                        >
-                                            <SelectTrigger className="w-full h-[48px] py-2 px-3 rounded-[8px] border border-[#645949] text-base font-medium leading-[120%] text-[#131313]">
-                                                <SelectValue placeholder="Select Gender" />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="male">Male</SelectItem>
-                                                <SelectItem value="female">Female</SelectItem>
-                                                <SelectItem value="other">Other</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                    </FormControl>
-                                    <FormMessage className="text-red-500" />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
+                                control={form.control}
+                                name="gender"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">
+                                            Gender (boy - girl)
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Select
+                                                onValueChange={field.onChange}
+                                                value={field.value}
+                                            >
+                                                <SelectTrigger className="w-full h-[48px] py-2 px-3 rounded-[8px] border border-[#645949] text-base font-medium leading-[120%] text-[#131313]">
+                                                    <SelectValue placeholder="Select Gender" />
+                                                </SelectTrigger>
+                                                <SelectContent>
+                                                    <SelectItem value="male">Male</SelectItem>
+                                                    <SelectItem value="female">Female</SelectItem>
+                                                    <SelectItem value="other">Other</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                        </FormControl>
+                                        <FormMessage className="text-red-500" />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
                                 control={form.control}
                                 name="jerseyNumber"
                                 render={({ field }) => (
@@ -253,7 +272,7 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                             />
                         </div>
 
-                        
+
 
                         <FormField
                             control={form.control}
@@ -490,76 +509,75 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                             />
 
                             <FormField
-  control={form.control}
-  name="position"
-  render={({ field }) => (
-    <FormItem>
-      <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">
-        Position (select up to 2)
-      </FormLabel>
+                                control={form.control}
+                                name="position"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">
+                                            Position (select up to 2)
+                                        </FormLabel>
 
-      <Popover >
-        <PopoverTrigger asChild>
-          <FormControl >
-            <Button
-              variant="outline"
-              className="w-full justify-between h-[48px] border border-[#645949]"
-            >
-              {field.value?.length
-                ? field.value
-                    .map(
-                      (v) =>
-                        POSITIONS.find((p) => p.value === v)?.label
-                    )
-                    .join(", ")
-                : "Select position"}
+                                        <Popover >
+                                            <PopoverTrigger asChild>
+                                                <FormControl >
+                                                    <Button
+                                                        variant="outline"
+                                                        className="w-full justify-between h-[48px] border border-[#645949]"
+                                                    >
+                                                        {field.value?.length
+                                                            ? field.value
+                                                                .map(
+                                                                    (v) =>
+                                                                        POSITIONS.find((p) => p.value === v)?.label
+                                                                )
+                                                                .join(", ")
+                                                            : "Select position"}
 
-              <span className="ml-2">▾</span>
-            </Button>
-          </FormControl>
-        </PopoverTrigger>
+                                                        <span className="ml-2">▾</span>
+                                                    </Button>
+                                                </FormControl>
+                                            </PopoverTrigger>
 
-        <PopoverContent className="min-w-[320px] p-3">
-          <div className="space-y-2">
-            {POSITIONS.map((pos) => {
-              const checked = field.value?.includes(pos.value)
-              const disabled =
-                !checked && field.value?.length >= 2
+                                            <PopoverContent className="min-w-[320px] p-3">
+                                                <div className="space-y-2">
+                                                    {POSITIONS.map((pos) => {
+                                                        const checked = field.value?.includes(pos.value)
+                                                        const disabled =
+                                                            !checked && field.value?.length >= 2
 
-              return (
-                <label
-                  key={pos.value}
-                  className={`flex items-center gap-3 text-sm cursor-pointer ${
-                    disabled ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={checked}
-                    disabled={disabled}
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        field.onChange([...field.value, pos.value])
-                      } else {
-                        field.onChange(
-                          field.value.filter((v) => v !== pos.value)
-                        )
-                      }
-                    }}
-                    className="h-4 w-4 accent-black"
-                  />
-                  {pos.label}
-                </label>
-              )
-            })}
-          </div>
-        </PopoverContent>
-      </Popover>
+                                                        return (
+                                                            <label
+                                                                key={pos.value}
+                                                                className={`flex items-center gap-3 text-sm cursor-pointer ${disabled ? "opacity-50 cursor-not-allowed" : ""
+                                                                    }`}
+                                                            >
+                                                                <input
+                                                                    type="checkbox"
+                                                                    checked={checked}
+                                                                    disabled={disabled}
+                                                                    onChange={(e) => {
+                                                                        if (e.target.checked) {
+                                                                            field.onChange([...field.value, pos.value])
+                                                                        } else {
+                                                                            field.onChange(
+                                                                                field.value.filter((v) => v !== pos.value)
+                                                                            )
+                                                                        }
+                                                                    }}
+                                                                    className="h-4 w-4 accent-black"
+                                                                />
+                                                                {pos.label}
+                                                            </label>
+                                                        )
+                                                    })}
+                                                </div>
+                                            </PopoverContent>
+                                        </Popover>
 
-      <FormMessage className="text-red-500" />
-    </FormItem>
-  )}
-/>
+                                        <FormMessage className="text-red-500" />
+                                    </FormItem>
+                                )}
+                            />
 
 
                         </div>
@@ -567,7 +585,7 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
                             <FormField
                                 control={form.control}
-                                name="agencyName"
+                                name="agent"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">Agent/Agency Name</FormLabel>
@@ -640,8 +658,85 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                                     School Name
                                                 </FormLabel>
                                                 <FormControl>
+                                                    <RadioGroup
+                                                        onValueChange={field.onChange}
+                                                        value={field.value}
+                                                        className="flex flex-row items-center space-x-8 pt-2"
+                                                    >
+                                                        <div className="flex items-center space-x-3">
+                                                            <RadioGroupItem value="middle school" id="middle school" />
+                                                            <label htmlFor="middle school" className="cursor-pointer text-base font-medium text-[#131313]">
+                                                                Middle School
+                                                            </label>
+                                                        </div>
 
-                                                    {/* <Select
+                                                        <div className="flex items-center space-x-3">
+                                                            <RadioGroupItem value="high school" id="high school" />
+                                                            <label htmlFor="high school" className="cursor-pointer text-base font-medium text-[#131313]">
+                                                                High School
+                                                            </label>
+                                                        </div>
+
+                                                        <div className="flex items-center space-x-3">
+                                                            <RadioGroupItem value="college / university" id="college / university" />
+                                                            <label htmlFor="college / university" className="cursor-pointer text-base font-medium text-[#131313]">
+                                                                College / University
+                                                            </label>
+                                                        </div>
+                                                    </RadioGroup>
+                                                </FormControl>
+                                                <FormMessage className="text-red-500" />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                </div>
+
+                                {/* GPA field: show only if College / University is selected */}
+                                {/* GPA field: show if High School OR College / University */}
+                                {["high school", "college / university"].includes(form.watch("institute") ?? "") && (
+                                    <div className="md:col-span-1">
+                                        <FormField
+                                            control={form.control}
+                                            name="gpa"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">
+                                                        GPA
+                                                    </FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            placeholder="Write here"
+                                                            {...field}
+                                                            className="w-full h-[47px] border border-[#645949] rounded-[8px] text-[#131313] placeholder:text-[#929292]"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage className="text-red-500" />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
+                                )}
+
+                            </div>
+                        )}
+
+
+                        {/* Conditional Education Fields */}
+                        {/* {inSchoolOrCollege === "yes" && (
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+                                <div className="md:col-span-2">
+                                    <FormField
+                                        control={form.control}
+                                        name="institute"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">
+                                                    School Name
+                                                </FormLabel>
+                                                <FormControl> */}
+
+                        {/* <Select
                                                     onValueChange={field.onChange}
                                                     value={field.value}
                                                 >
@@ -654,14 +749,14 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                                         <SelectItem value="college or university">College / University</SelectItem>
                                                     </SelectContent>
                                                 </Select> */}
-                                                    {/* 
+                        {/* 
                                                  <Input
                                                     placeholder="Write here"
                                                     {...field}
                                                     className="w-full h-[47px] border border-[#645949] rounded-[8px] text-[#131313] placeholder:text-[#929292]"
                                                 />  */}
 
-                                                    <RadioGroup
+                        {/* <RadioGroup
                                                         onValueChange={field.onChange}
                                                         value={field.value}
                                                         className="flex flex-row items-center space-x-8 pt-2"
@@ -713,8 +808,10 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                         )}
                                     />
                                 </div>
+
+                                
                             </div>
-                        )}
+                        )} */}
 
 
 
