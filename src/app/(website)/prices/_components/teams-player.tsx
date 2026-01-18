@@ -5,6 +5,8 @@ import { useQuery } from '@tanstack/react-query';
 import { SubscriptionApiResponse } from './subscription-data-type';
 import { useSession } from 'next-auth/react';
 import RegisterAsTeamPlayerForm from './register-as-team-player-form';
+import TeamPricingSkeleton from './team-pricing-skeleton';
+import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
 
 const TeamsPlayer = () => {
     const [teamIsOpen, setTeamIsOpen] = useState(false);
@@ -13,7 +15,7 @@ const [subscriptionId, setSubscriptionId] = useState<string | null>(null);
     const session = useSession();
     const token = (session?.data?.user as { accessToken: string })?.accessToken;
 
-    const { data } = useQuery<SubscriptionApiResponse>({
+    const { data, isLoading, error, isError } = useQuery<SubscriptionApiResponse>({
         queryKey: ["subscription-all"],
         queryFn: async () => {
             const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/subscription`, {
@@ -40,7 +42,21 @@ const [subscriptionId, setSubscriptionId] = useState<string | null>(null);
     return aGames - bGames;
   });
 
-    console.log(subscriptionData)
+    // console.log(subscriptionData)
+
+       if (isLoading) {
+            return <div className="pb-6">
+                <TeamPricingSkeleton />
+            </div>
+        }
+    
+        if (isError) {
+            const message =
+                error instanceof Error ? error.message : "Something went wrong!";
+            return <div className="pb-8">
+                <ErrorContainer message={message} />
+            </div>
+        }
     return (
         <div className="py-10 md:py-16 lg:py-24">
             <div className="container ">

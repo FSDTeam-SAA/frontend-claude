@@ -157,7 +157,7 @@ const RegisterAsIndividualPlayerForm = ({
 
       <Dialog open={open} onOpenChange={onOpenChange}>
 
-        <DialogContent className="max-w-3xl">
+        <DialogContent className="max-w-2xl">
           {/* Logo */}
           <Link href="/" className="flex items-center justify-center">
             <Image
@@ -168,11 +168,11 @@ const RegisterAsIndividualPlayerForm = ({
               className="w-[289px] h-[80px] object-cover"
             />
           </Link>
-          <h4 className="text-2xl md:text-3xl lg:text-4xl text-[#131313] leading-[120%] font-normal text-center pb-10">Register As Individual Player</h4>
-          <div className="bg-white border-[2px] border-[#E7E7E7] shadow-[0px_0px_32px_0px_#0000001F] p-6 rounded-[16px]">
-            <h4 className="text-xl md:text-2xl lg:text-3xl text-[#131313] leading-[120%] font-normal text-center pb-6">Personal Information</h4>
+          <h4 className="text-2xl md:text-3xl lg:text-4xl text-[#131313] leading-[120%] font-normal text-center pb-2">Register As Individual Player</h4>
+          <div className="bg-white border-[2px] border-[#E7E7E7] shadow-[0px_0px_32px_0px_#0000001F] p-3 rounded-[16px]">
+            <h4 className="text-xl md:text-2xl lg:text-3xl text-[#131313] leading-[120%] font-normal text-center pb-1">Personal Information</h4>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 overflow-auto h-[200px] md:h-[250px] p-2">
 
                 <FormField
                   control={form.control}
@@ -181,7 +181,7 @@ const RegisterAsIndividualPlayerForm = ({
                     <FormItem>
                       <FormLabel className="text-base text-[#424242] leading-[150%] font-normal">Player Name *</FormLabel>
                       <FormControl>
-                        <Input className="h-[48px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " placeholder="Enter Player Name..." {...field} />
+                        <Input className="h-[42px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " placeholder="Enter Player Name..." {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -194,7 +194,7 @@ const RegisterAsIndividualPlayerForm = ({
                     <FormItem>
                       <FormLabel className="text-base text-[#424242] leading-[150%] font-normal">Team Name *</FormLabel>
                       <FormControl>
-                        <Input className="h-[48px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " placeholder="Enter Player Name..." {...field} />
+                        <Input className="h-[42px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " placeholder="Enter Player Name..." {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -214,7 +214,7 @@ const RegisterAsIndividualPlayerForm = ({
                           onValueChange={field.onChange}
                           value={field.value}
                         >
-                          <SelectTrigger className="w-full h-[48px] py-2 px-3 rounded-[8px] border border-[#645949] text-base font-medium leading-[120%] text-[#131313]">
+                          <SelectTrigger className="w-full h-[42px] py-2 px-3 rounded-[8px] border border-[#645949] text-base font-medium leading-[120%] text-[#131313]">
                             <SelectValue placeholder="Select Category" />
                           </SelectTrigger>
                           <SelectContent className="h-[200px] overflow-y-auto">
@@ -252,7 +252,7 @@ const RegisterAsIndividualPlayerForm = ({
                           onValueChange={field.onChange}
                           value={field.value}
                         >
-                          <SelectTrigger className="w-full h-[48px] py-2 px-3 rounded-[8px] border border-[#645949] text-base font-medium leading-[120%] text-[#131313]">
+                          <SelectTrigger className="w-full h-[42px] py-2 px-3 rounded-[8px] border border-[#645949] text-base font-medium leading-[120%] text-[#131313]">
                             <SelectValue placeholder="Select League" />
                           </SelectTrigger>
                           <SelectContent className="h-[200px] overflow-y-auto">
