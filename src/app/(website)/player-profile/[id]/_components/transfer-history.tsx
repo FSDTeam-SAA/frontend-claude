@@ -69,15 +69,15 @@ const TransferHistory = ({
 
                                         <TableCell className="w-1/4 py-3">
                                         <div className="flex items-center gap-1">
-                                            <Image src={info?.leftClub || "/assets/images/no-flag.png"} alt={info?.leftClubName || "team name"} width={100} height={100} className="w-12 h-8 object-cover" />
-                                            <Image src={info?.leftCountery || "/assets/images/no-flag.png"} alt={info?.leftClubName || "team name"} width={100} height={100} className="w-12 h-8 object-cover" />
+                                            <Image src={info?.leftClub || "/assets/images/no-flag.png"} alt={info?.leftClubName || "team name"} width={100} height={100} className="w-8 h-8 object-contain" />
+                                            <Image src={info?.leftCountery || "/assets/images/no-flag.png"} alt={info?.leftClubName || "team name"} width={100} height={100} className="w-8 h-8 object-contain" />
                                             <p className="text-base text-[#131313] leading-[150%] font-normal py-3">{info?.leftClubName || "N/A"}</p>
                                             </div>
                                         </TableCell>
                                           <TableCell className="w-1/4 py-3">
                                           <div className="flex items-center gap-1">
-                                            <Image src={info?.joinedClub || "/assets/images/no-flag.png"} alt={info?.joinedclubName || "team name"} width={100} height={100} className="w-12 h-8 object-cover" />
-                                            <Image src={info?.joinedCountery || "/assets/images/no-flag.png"} alt={info?.joinedclubName || "team name"} width={100} height={100} className="w-12 h-8 object-cover" />
+                                            <Image src={info?.joinedClub || "/assets/images/no-flag.png"} alt={info?.joinedclubName || "team name"} width={100} height={100} className="w-8 h-8 object-contain" />
+                                            <Image src={info?.joinedCountery || "/assets/images/no-flag.png"} alt={info?.joinedclubName || "team name"} width={100} height={100} className="w-8 h-8 object-contain" />
                                             <p className="text-base text-[#131313] leading-[150%] font-normal py-3">{info?.joinedclubName || "N/A"}</p>
                                             </div>
                                         </TableCell>

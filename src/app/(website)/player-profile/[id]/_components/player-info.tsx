@@ -41,7 +41,7 @@ const PlayerInfo = ({
 
 
     if (isLoading) {
-        return <div className="py-0">
+        return <div className="pb-8">
             <PlayerInfoSkeleton />
         </div>
     }
