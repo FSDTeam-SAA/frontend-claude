@@ -1,31 +1,40 @@
-"use client"
+
 import React from 'react'
 import Image from 'next/image'
-import { useQuery } from '@tanstack/react-query'
-import { UserProfileApiResponse } from './player-data-type';
+import { UserProfile } from './player-data-type';
 
-const GroundField = ({ id }: { id: string }) => {
-  const { data} = useQuery<UserProfileApiResponse>({
-        queryKey: ["ground-field", id],
-        queryFn: async () => {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/detail/${id}`)
-            return res.json();
-        },
-    })
+import PlayerInfoSkeleton from './profile-info-skeleton';
+import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
 
-    console.log(data)
+const GroundField = ({
+    data,
+    isLoading,
+    error,
+    isError,
+}: {
+    data?: UserProfile
+    isLoading: boolean
+    error: unknown
+    isError: boolean
+}) => {
 
-    // if (isLoading) {
-    //     return <div className="pb-8">
-    //         <PlayerInfoSkeleton />
-    //     </div>
-    // } else if (isError) {
-    //     return <div className='py-8'>
-    //         <ErrorContainer message={error?.message || "Something went wrong!"} />
-    //     </div>
-    // }
+    if (isLoading) {
+        return <div className="pt-0">
+            <PlayerInfoSkeleton />
+        </div>
+    }
 
-    const personalInfo = data?.data?.user;
+    if (isError) {
+        const message =
+            error instanceof Error ? error.message : "Something went wrong!";
+        return <div className="py-8">
+            <ErrorContainer message={message} />
+        </div>
+    }
+
+    const personalInfo = data?.user;
+
+    if (!personalInfo) return null;
   return (
     <div className="bg-white shadow-[0px_4px_16px_0px_#00000014] rounded-[16px] p-6 ">
       <div className='flex items-center justify-between pb-1 md:pb-4'>
