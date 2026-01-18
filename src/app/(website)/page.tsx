@@ -6,7 +6,7 @@ import WhyDataMatters from './_components/why-data-matters'
 import WhyYouNeedAProfile from './_components/why-you-need-profile'
 import WhyWeAreUnique from './_components/why-we-are-unique'
 import HowOurAnalytics from './_components/how-our-analytics'
-import AccessThePlatform from './_components/access-the-platform'
+// import AccessThePlatform from './_components/access-the-platform'
 import WhatDoWeOffer from './_components/what-do-we-offer'
 import OurMission from './_components/our-mission'
 import ProjectLeader from './_components/project-leaders'
@@ -22,7 +22,7 @@ const HomePage = () => {
                 <WhyWeAreUnique/>
                 <WhyYouNeedAProfile/>
                 <WhyDataMatters/>
-                <AccessThePlatform/>
+                {/* <AccessThePlatform/> */}
                 <ProjectLeader/>
                 <OurPartners/>
                 <FaqSection />

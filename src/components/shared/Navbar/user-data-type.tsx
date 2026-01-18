@@ -47,6 +47,7 @@ export interface User {
   institute?: string
   gpa?: string
   satAct?: string
+  age?:number;
 
     team?: string;
   numberOfGame?: number;

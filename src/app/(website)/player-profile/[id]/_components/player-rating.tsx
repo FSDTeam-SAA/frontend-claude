@@ -87,12 +87,14 @@ const PlayerRating = ({
     }
 
     const ratingData = data?.rating?.slice(0, 5);
+    const gameCount = Math.min(data?.rating?.length ?? 0, 5);
+
 
     if (!ratingData) return null;
   return (
     <div className="bg-white shadow-[0px_4px_16px_0px_#00000014] rounded-[16px] p-5">
       <h4 className="text-xl md:text-3xl lg:text-4xl font-normal leading-[120%] text-[#131313] pb-4">
-        PLAYER RATINGS FROM LAST 5 GAMES
+        PLAYER RATINGS FROM LAST {gameCount} GAME{gameCount > 1 ? "S" : ""}
       </h4>
 
       <Card>

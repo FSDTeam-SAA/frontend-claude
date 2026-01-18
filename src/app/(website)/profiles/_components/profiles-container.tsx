@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/table"
 // import Link from "next/link"
 import { useRouter } from "next/navigation";
-import moment from 'moment';
+// import moment from 'moment';
 import Image from 'next/image';
 import { UsersApiResponse } from '@/components/shared/Navbar/user-data-type';
 import { PlayersTableSkeleton } from './profile-skeleton';
@@ -63,7 +63,7 @@ const ProfilesContainer = () => {
         content = (
             <Table className="rounded-[16px] border border-[#E7E7E7] overflow-hidden">
                 <TableHeader>
-                    <TableRow className="bg-[#079201] ">
+                    <TableRow className="bg-[#079201] hover:bg-primary">
                         <TableHead className="text-lg md:text-xl font-normal text-white leading-[120%] py-3 pl-10 md:pl-14 lg:pl-16">Players</TableHead>
                         <TableHead className="text-lg md:text-xl font-normal text-white text-center leading-[120%] py-3">Position</TableHead>
                         <TableHead className="text-lg md:text-xl font-normal text-white text-center leading-[120%] py-3">Age</TableHead>
@@ -84,8 +84,10 @@ const ProfilesContainer = () => {
                                     {/* </Link> */}
                                 </TableCell>
                                 {/* <TableCell className="text-base text-[#131313] leading-[150%] font-normal py-3">{moment(info?.debut).format("DD / MM / YYYY")}</TableCell> */}
-                                <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3">  {info?.position?.join(", ") || "N/A"} </TableCell>
-                                <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3">  {moment(info?.dob).format("DD / MM / YYYY")} </TableCell>
+                                <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3"> {info?.position?.map(p => p.toUpperCase()).join("-") || "N/A"}
+                                </TableCell>
+                                {/* <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3">  {moment(info?.dob).format("DD / MM / YYYY")} </TableCell> */}
+                                <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3"> {info?.age || 0} </TableCell>
                                 <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3"> {info?.citizenship || "N/A"} </TableCell>
                             </TableRow>
                         }

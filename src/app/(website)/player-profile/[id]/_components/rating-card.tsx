@@ -1,18 +1,20 @@
 "use client";
 
-import { getStarCount } from "@/components/utils/getStarCount";
+// import { getStarCount } from "@/components/utils/getStarCount";
 import { Star } from "lucide-react";
 
 type RatingCardProps = {
   averageRating: number;
   totalGames: number;
+  stars: number;
 };
 
 export default function RatingCard({
   averageRating,
   totalGames,
+  stars
 }: RatingCardProps) {
-  const stars = getStarCount(averageRating);
+  // const stars = getStarCount(averageRating);
 
   return (
     <div className="w-auto rounded-[16px] bg-primary py-6 px-5 text-white shadow-lg">
