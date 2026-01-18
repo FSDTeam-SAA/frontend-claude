@@ -2,16 +2,17 @@
 
 import React from 'react'
 import PlayerInfo from './player-info'
-// import PlayerRating from './player-rating'
-// import GroundField from './ground-field'
+import PlayerRating from './player-rating'
+import GroundField from './ground-field'
 import NationalTeam from './national-team-career'
-// import TransferHistory from './transfer-history'
-// import DefensiveStats from './defensive-stats'
-// import Fouls from './fouls'
-// import LastPlayerReport from './last-player-report'
-// import HighlightsVideo from './highlights-video'
+import TransferHistory from './transfer-history'
+import DefensiveStats from './defensive-stats'
+import Fouls from './fouls'
+import LastPlayerReport from './last-player-report'
+import HighlightsVideo from './highlights-video'
 import { useQuery } from '@tanstack/react-query'
 import { UserProfileApiResponse } from './player-data-type'
+import AttackingStats from './attacking-stats'
 
 const PlayerProfileContainer = ({id}:{id:string}) => {
 
@@ -30,14 +31,14 @@ const PlayerProfileContainer = ({id}:{id:string}) => {
          <PlayerInfo data={data?.data } isLoading={isLoading} error={error} isError={isError} />
 
 
-      {/* <div className='container grid grid-cols-1 md:grid-cols-5 gap-6 md:px-0 pb-6'>
+      <div className='container grid grid-cols-1 md:grid-cols-5 gap-6 md:px-0 pb-6'>
         <div className="md:col-span-3">
-          <PlayerRating id={params?.id}/>
+          <PlayerRating data={data?.data } isLoading={isLoading} error={error} isError={isError} />
         </div>
         <div className="md:col-span-2">
-          <GroundField id={params?.id} />
+          <GroundField data={data?.data } isLoading={isLoading} error={error} isError={isError} />
         </div>
-      </div> */}
+      </div>
 
 
       {/* national team */}
@@ -46,42 +47,42 @@ const PlayerProfileContainer = ({id}:{id:string}) => {
       </section>
 
       {/* Transfer History */}
-      {/* <section>
-        <TransferHistory id={params?.id} />
-      </section> */}
+      <section>
+        <TransferHistory data={data?.data } isLoading={isLoading} error={error} isError={isError} />
+      </section>
 
 
 
 
       {/* defensive stats section  */}
-      {/* <section>
-        <DefensiveStats id={params?.id} />
-      </section> */}
+      <section>
+        <DefensiveStats data={data?.data } isLoading={isLoading} error={error} isError={isError} />
+      </section>
 
       {/* Attacking stats section  */}
-      {/* <section>
-        <AttackingStats id={params?.id}/>
-      </section> */}
+      <section>
+        <AttackingStats data={data?.data } isLoading={isLoading} error={error} isError={isError}/>
+      </section>
 
       {/* fouls section  */}
-      {/* <section>
-        <Fouls id={params?.id} />
-      </section> */}
+      <section>
+        <Fouls data={data?.data } isLoading={isLoading} error={error} isError={isError} />
+      </section>
 
        {/* last player report section  */}
-      {/* <section>
-        <LastPlayerReport id={params?.id} />
-      </section> */}
+      <section>
+        <LastPlayerReport data={data?.data } isLoading={isLoading} error={error} isError={isError} />
+      </section>
 
       {/* defensive stats section  */}
       {/* <section>  
-        <DefensiveStats id={params?.id} />
+        <DefensiveStats data={data?.data } isLoading={isLoading} error={error} isError={isError} />
       </section> */}
 
       {/* highlight video  */}
-      {/* <section>
-        <HighlightsVideo id={params?.id} />
-      </section> */}
+      <section>
+        <HighlightsVideo data={data?.data } isLoading={isLoading} error={error} isError={isError} />
+      </section>
 
       
     </div>

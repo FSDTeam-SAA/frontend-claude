@@ -9,6 +9,7 @@ export interface UserProfileApiResponse {
 
 export interface UserProfile {
   user: User
+  attacking: AttackingStats[],
   rating: Rating[]
   gkstats: GKStats[]
   fouls: FoulsStats[]
@@ -59,6 +60,29 @@ export interface User {
   subscriptionExpiry: string
   __v: number
 }
+
+export interface AttackingStats {
+  _id: string
+  gk: string
+
+  goals: number
+  assists: number
+
+  shotsNsidePr: number
+  shotsOutsidePa: number
+  totalShots: number
+  shotsOnTarget: number
+  shootingAccuracy: number
+  shotsOffTarget: number
+
+  passesAccuracy: number
+  takeOn: number
+
+  createdAt: string
+  updatedAt: string
+  __v: number
+}
+
 
 
 export interface Rating {

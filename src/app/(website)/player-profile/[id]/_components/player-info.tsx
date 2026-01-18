@@ -21,7 +21,7 @@ const PlayerInfo = ({
 }) => {
 
     if (isLoading) {
-        return <div className="pt-0">
+        return <div className="py-0">
             <PlayerInfoSkeleton />
         </div>
     }

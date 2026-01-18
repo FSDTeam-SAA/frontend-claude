@@ -27,7 +27,7 @@ const NationalTeam = ({
 }) => {
 
     if (isLoading) {
-        return <div className="pb-8">
+        return <div className="pb-0">
             <PlayerInfoSkeleton />
         </div>
     }
