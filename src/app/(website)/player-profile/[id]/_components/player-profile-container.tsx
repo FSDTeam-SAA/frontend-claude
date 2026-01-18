@@ -17,6 +17,7 @@ import DistributionGkStats from './distribution-gk-stats'
 import DistributionPlayerStats from './distribution-player-stats'
 import SetPieces from './set-pieces'
 import GkStats from './gk-stats'
+import SimilarPlayers from './similar-players'
 
 const PlayerProfileContainer = ({id}:{id:string}) => {
 
@@ -67,8 +68,7 @@ const PlayerProfileContainer = ({id}:{id:string}) => {
         
       </section>
 
-      
-
+    
       {/* defensive stats section  */}
       <section>
         <DefensiveStats data={data?.data } isLoading={isLoading} error={error} isError={isError} />
@@ -115,6 +115,11 @@ const PlayerProfileContainer = ({id}:{id:string}) => {
       {/* highlight video  */}
       <section>
         <HighlightsVideo data={data?.data } isLoading={isLoading} error={error} isError={isError} />
+      </section>
+
+      {/* similar players  */}
+      <section>
+        <SimilarPlayers data={data?.data } isLoading={isLoading} error={error} isError={isError} />
       </section>
 
       
