@@ -79,7 +79,7 @@ const ProfilesContainer = () => {
                                     {/* <Link href="/player-profile"> */}
                                     <div className="bg-[#E7F5E6] flex items-center gap-3 rounded-[8px] p-4">
                                         <Image src={info?.profileImage || "/assets/images/no-flag.png"} alt={info?.firstName || "user name"} width={100} height={100} className="w-12 h-12 object-contain rounded-[8px]" />
-                                        <p className="text-base text-[#131313] leading-[150%] font-normal py-3">{info?.firstName || "N/A"} {info?.lastName || "N/A"}</p>
+                                        <p className="text-base text-[#131313] leading-[150%] font-normal py-3">{info?.firstName || "N/A"} {info?.lastName || " "}</p>
                                     </div>
                                     {/* </Link> */}
                                 </TableCell>

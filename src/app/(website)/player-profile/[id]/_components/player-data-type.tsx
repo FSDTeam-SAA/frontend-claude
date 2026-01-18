@@ -35,7 +35,7 @@ export interface User {
   profileImage: string
   verified: boolean
   position: string[]
-  socialMedia: string[]
+  socialMedia?: SocialMedia[];
   playingVideo: string[]
   isSubscription: boolean
   subscription: string
@@ -62,6 +62,12 @@ export interface User {
   age: number
   subscriptionExpiry: string
   __v: number
+}
+
+export interface SocialMedia {
+  name: string;
+  url: string;
+  _id: string;
 }
 
 export interface AttackingStats {
