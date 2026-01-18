@@ -32,9 +32,19 @@ import { useSession } from "next-auth/react"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
 import { format } from "date-fns"
-import { CalendarIcon } from "lucide-react"
+import { CalendarIcon, X } from "lucide-react"
 import { Calendar } from "@/components/ui/calendar"
 import { User } from "./user-data-type"
+
+
+const socialMediaNameEnum = z.enum([
+    "Facebook",
+    "Instagram",
+    "Twitter",
+    "YouTube",
+    "TikTok",
+]);
+
 
 const formSchema = z.object({
     firstName: z.string().min(2, {
@@ -56,7 +66,12 @@ const formSchema = z.object({
         message: "Weight must be at least 2 characters.",
     }),
     agent: z.string().optional(),
-    social_media: z.string().optional(),
+    socialMedia: z.array(
+        z.object({
+            name: socialMediaNameEnum.optional(),
+            url: z.string().url().optional(),
+        })
+    ).optional(),
     citizenship: z.string().min(2, {
         message: "citizenship must be at least 2 characters.",
     }),
@@ -135,6 +150,14 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
         { label: "Striker", value: "striker" },
     ]
 
+    const SOCIAL_MEDIA_OPTIONS = [
+        "Facebook",
+        "Instagram",
+        "Twitter",
+        "YouTube",
+        "TikTok",
+    ] as const
+
 
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -148,7 +171,17 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
             hight: user?.hight || "",
             weight: user?.weight || "",
             agent: user?.agent || "",
-            social_media: Array.isArray(user?.socialMedia) ? user.socialMedia.join(", ") : "",
+            socialMedia: user?.socialMedia
+                ? user.socialMedia.map((item) => ({
+                    name: item.name as
+                        | "Facebook"
+                        | "Instagram"
+                        | "Twitter"
+                        | "YouTube"
+                        | "TikTok",
+                    url: item.url,
+                }))
+                : [],
             citizenship: user?.citizenship || "",
             currentClub: user?.currentClub || "",
             league: user?.league || "",
@@ -162,6 +195,9 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
             gpa: user?.gpa || "",
         }
     })
+
+
+
 
     const inSchoolOrCollege = form.watch("inSchoolOrCollege")
 
@@ -598,7 +634,98 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                             />
                             <FormField
                                 control={form.control}
-                                name="social_media"
+                                name="socialMedia"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base font-normal text-[#131313]">
+                                            Social Media
+                                        </FormLabel>
+
+                                        <div className="space-y-4">
+                                            {field.value?.map((item, index) => (
+                                                <div
+                                                    key={index}
+                                                    className="grid grid-cols-1 md:grid-cols-[1fr_2fr_auto] gap-4 items-center"
+                                                >
+                                                    {/* Social Media Name */}
+                                                    <Select
+                                                        value={item.name}
+                                                        onValueChange={(value) => {
+                                                            const updated = [...(field.value ?? [])]
+                                                            updated[index] = {
+                                                                ...updated[index],
+                                                                name: value as typeof item.name,
+                                                            }
+                                                            field.onChange(updated)
+                                                        }}
+                                                    >
+                                                        <SelectTrigger className="h-[47px] border border-[#645949] rounded-[8px]">
+                                                            <SelectValue placeholder="Select platform" />
+                                                        </SelectTrigger>
+                                                        <SelectContent>
+                                                            {SOCIAL_MEDIA_OPTIONS.map((option) => (
+                                                                <SelectItem key={option} value={option}>
+                                                                    {option}
+                                                                </SelectItem>
+                                                            ))}
+                                                        </SelectContent>
+                                                    </Select>
+
+                                                    {/* URL */}
+                                                    <Input
+                                                        placeholder="https://"
+                                                        value={item.url}
+                                                        onChange={(e) => {
+                                                            const updated = [...(field.value ?? [])]
+                                                            updated[index] = {
+                                                                ...updated[index],
+                                                                url: e.target.value,
+                                                            }
+                                                            field.onChange(updated)
+                                                        }}
+                                                        className="h-[47px] border border-[#645949] rounded-[8px]"
+                                                    />
+
+                                                    {/* DELETE BUTTON */}
+                                                    <Button
+                                                        type="button"
+                                                        variant="outline"
+                                                        className="p-2 bg-red-500 text-white border-red-400 rounded-[10px] hover:bg-red-50"
+                                                        onClick={() => {
+                                                            const updated = field.value?.filter((_, i) => i !== index)
+                                                            field.onChange(updated)
+                                                        }}
+                                                    >
+                                                        <X />
+                                                    </Button>
+                                                </div>
+                                            ))}
+
+                                            {/* ADD NEW SOCIAL MEDIA */}
+                                            <Button
+                                                type="button"
+                                                variant="outline"
+                                                className="mt-2 border-2 border-primary rounded-[10px]"
+                                                onClick={() =>
+                                                    field.onChange([
+                                                        ...(field.value ?? []),
+                                                        { name: "Facebook", url: "" },
+                                                    ])
+                                                }
+                                            >
+                                                + Add Social Media
+                                            </Button>
+                                        </div>
+
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+
+
+                            {/* <FormField
+                                control={form.control}
+                                name="socialMedia"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">Social media Link</FormLabel>
@@ -608,7 +735,7 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                         <FormMessage className="text-red-500" />
                                     </FormItem>
                                 )}
-                            />
+                            /> */}
                         </div>
 
 
