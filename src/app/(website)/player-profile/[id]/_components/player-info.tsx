@@ -54,8 +54,11 @@ const PlayerInfo = ({
                                 Age
                             </span>
                             <span className="text-lg md:text-xl text-[#131313] font-normal leading-[120%]">
-                                {moment(personalInfo?.dob).format("DD MMM YYYY") || "N/A"}
-                            </span>
+  {personalInfo?.dob
+    ? `${moment(personalInfo.dob).format("DD MMM YYYY")} (${personalInfo.age || 0})`
+    : "N/A"}
+</span>
+
                         </li>
 
                         <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Gender</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.gender || "N/A"}</span></li>

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/table"
 // import Link from "next/link"
 import { useRouter } from "next/navigation";
-import moment from 'moment';
+// import moment from 'moment';
 import Image from 'next/image';
 import { UsersApiResponse } from '@/components/shared/Navbar/user-data-type';
 import { PlayersTableSkeleton } from './profile-skeleton';
@@ -85,8 +85,9 @@ const ProfilesContainer = () => {
                                 </TableCell>
                                 {/* <TableCell className="text-base text-[#131313] leading-[150%] font-normal py-3">{moment(info?.debut).format("DD / MM / YYYY")}</TableCell> */}
                                 <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3"> {info?.position?.map(p => p.toUpperCase()).join("-") || "N/A"}
- </TableCell>
-                                <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3">  {moment(info?.dob).format("DD / MM / YYYY")} </TableCell>
+                                </TableCell>
+                                {/* <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3">  {moment(info?.dob).format("DD / MM / YYYY")} </TableCell> */}
+                                <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3"> {info?.age || 0} </TableCell>
                                 <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3"> {info?.citizenship || "N/A"} </TableCell>
                             </TableRow>
                         }

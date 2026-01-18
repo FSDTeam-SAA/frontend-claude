@@ -14,12 +14,12 @@ export interface UserProfile {
   gkstats: GKStats[]
   fouls: FoulsStats[]
   defensive: DefensiveStats[]
-  // distribution: DistributionStats[]
+  distribution: DistributionStats[]
   setpieces: SetPiecesStats[]
   national: NationalStats[]
   reports: Reports[]
   transferHistory: TransferHistory[]
-  // gkDistributionStats: GKDistributionStats[]
+  gkDistributionStats: GKDistributionStats[]
 }
 
 
@@ -28,7 +28,8 @@ export interface User {
   firstName: string
   lastName: string
   email: string
-  role: string
+  // role: string
+  role: "admin" | "player" | "gk";
   provider: string
   profileImage: string
   verified: boolean
@@ -57,6 +58,7 @@ export interface User {
   weight: string
   jerseyNumber: string
   teamName: string
+  age: number
   subscriptionExpiry: string
   __v: number
 }
@@ -214,6 +216,61 @@ export interface TransferHistory {
   updatedAt: string
   __v: number
 }
+
+export interface DistributionStats {
+  _id: string
+  player: string
+
+  passes: number
+  passesinFinalThird: number
+  passesinMiddleThird: number
+  passesinOerensiveThird: number
+
+  kevPasses: number
+  longPasses: number
+  mediumPasses: number
+  shortPasses: number
+
+  passesForward: number
+  passesSidewavs: number
+  passesBackward: number
+
+  passesReceived: number
+  crosses: number
+  stepIn: number
+  turnoverConceded: number
+
+  mostPassesPlayerBetween: number
+
+  createdAt: string
+  updatedAt: string
+  __v: number
+}
+
+export interface GKDistributionStats {
+  _id: string
+  gk: string
+
+  keyPasses: number
+  mediumRangePasses: number
+  passes: number
+  shortPasses: number
+
+  passesInFinalThird: number
+  passesForward: number
+  passesInMiddleThird: number
+  passesSideways: number
+  passesInDefensiveThird: number
+
+  passesReceived: number
+  longPasses: number
+
+  createdAt: string
+  updatedAt: string
+  __v: number
+}
+
+
 
 
 

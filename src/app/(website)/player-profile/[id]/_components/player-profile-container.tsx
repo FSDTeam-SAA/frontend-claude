@@ -13,6 +13,8 @@ import HighlightsVideo from './highlights-video'
 import { useQuery } from '@tanstack/react-query'
 import { UserProfileApiResponse } from './player-data-type'
 import AttackingStats from './attacking-stats'
+import DistributionGkStats from './distribution-gk-stats'
+import DistributionPlayerStats from './distribution-player-stats'
 
 const PlayerProfileContainer = ({id}:{id:string}) => {
 
@@ -25,6 +27,10 @@ const PlayerProfileContainer = ({id}:{id:string}) => {
     })
 
     console.log(data)
+
+    const playerRole =   data?.data?.user?.role;
+
+    console.log(playerRole)
 
   return (
     <div>
@@ -64,6 +70,14 @@ const PlayerProfileContainer = ({id}:{id:string}) => {
         <AttackingStats data={data?.data } isLoading={isLoading} error={error} isError={isError}/>
       </section>
 
+        {/* Distribution stats section  */}
+      <section>  
+        {
+          playerRole == "gk" ?  <DistributionGkStats data={data?.data } isLoading={isLoading} error={error} isError={isError}/> :  <DistributionPlayerStats data={data?.data } isLoading={isLoading} error={error} isError={isError}/>
+        }
+        <DefensiveStats data={data?.data } isLoading={isLoading} error={error} isError={isError} />
+      </section>
+
       {/* fouls section  */}
       <section>
         <Fouls data={data?.data } isLoading={isLoading} error={error} isError={isError} />
@@ -73,11 +87,6 @@ const PlayerProfileContainer = ({id}:{id:string}) => {
       <section>
         <LastPlayerReport data={data?.data } isLoading={isLoading} error={error} isError={isError} />
       </section>
-
-      {/* defensive stats section  */}
-      {/* <section>  
-        <DefensiveStats data={data?.data } isLoading={isLoading} error={error} isError={isError} />
-      </section> */}
 
       {/* highlight video  */}
       <section>
