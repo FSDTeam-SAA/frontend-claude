@@ -21,7 +21,44 @@ export interface UserProfile {
   transferHistory: TransferHistory[]
   gkDistributionStats: GKDistributionStats[]
   avarageRatting: AvarageRatting 
+  semelierPlayer: SimilarPlayer[];
 }
+
+
+export interface SimilarPlayer {
+  _id: string;
+  name: string;
+  profileImage: string;
+
+  position: string[];
+
+  game: number;
+  avgRating: number;
+  similarity: number;
+
+  goals: number;
+  assists: number;
+
+  nationalTeam: NationalTeam;
+  lastTransfer: LastTransfer;
+}
+
+export interface LastTransfer {
+  season: string;
+  leftClub: string;
+  joinedClub: string;
+  joinedClubCountery: string;
+}
+
+export interface NationalTeam {
+  teamName: string;
+  match: number;
+  goals: number;
+  flag: string;
+}
+
+
+
 
 
 export interface SocialMedia {
@@ -308,6 +345,8 @@ export interface DistributionStats {
   turnoverConceded: number
 
   mostPassesPlayerBetween: number
+  passTheMost: string
+  ballTheMost: string
 
   createdAt: string
   updatedAt: string
