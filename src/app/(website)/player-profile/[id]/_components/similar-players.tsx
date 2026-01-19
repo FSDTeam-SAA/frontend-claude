@@ -118,7 +118,7 @@ const SimilarPlayers = ({
                                         {/* Similarity */}
                                         <div className="flex flex-col items-center gap-2">
                                             <div className="relative w-14 h-14">
-                                                <svg className="w-full h-full rotate-[-90deg]" viewBox="0 0 36 36">
+                                                <svg className="w-full h-full rotate-[-90deg]" viewBox="0 0 40 40">
                                                     <path
                                                         d="M18 2.0845
                  a 15.9155 15.9155 0 0 1 0 31.831
@@ -138,7 +138,7 @@ const SimilarPlayers = ({
                                                     />
                                                 </svg>
 
-                                                <span className="absolute inset-0 flex items-center justify-center text-base font-medium text-[#131313]">
+                                                <span className="absolute inset-0 flex items-center justify-center text-[15px] font-medium text-[#131313]">
                                                     {item?.similarity ?? 0}%
                                                 </span>
                                             </div>
@@ -150,39 +150,6 @@ const SimilarPlayers = ({
                                     </div>
                                 </div>
                             </li>
-
-                            //   <li key={item._id}>
-                            //     <div className="bg-[#E9EBF3] flex items-center gap-4 rounded-[16px] p-4">
-                            //       {/* Profile Image */}
-                            //       <Image
-                            //         src={item.profileImage || "/assets/images/no-item.jpg"}
-                            //         alt={`${item.firstName} ${item.lastName}`}
-                            //         width={93}
-                            //         height={93}
-                            //         className="w-[93px] h-[93px] rounded-[8px] object-cover"
-                            //       />
-
-                            //       {/* Info */}
-                            //       <div>
-                            //         <h4 className="text-lg md:text-xl text-[#131313] font-normal leading-[120%]">
-                            //           {item.firstName} {item.lastName}
-                            //         </h4>
-
-                            //         <div className="flex items-center gap-2 pt-3">
-                            //           <Image
-                            //             src={item.profileImage || "/assets/images/no-item.jpg"}
-                            //             alt="flag"
-                            //             width={24}
-                            //             height={24}
-                            //             className="w-6 h-6 rounded-[8px] object-cover"
-                            //           />
-                            //           <p className="text-sm font-normal text-[#131313] leading-[150%]">
-                            //             {item.citizenship || "N/A"}
-                            //           </p>
-                            //         </div>
-                            //       </div>
-                            //     </div>
-                            //   </li>
                         );
                     })}
                 </ul>

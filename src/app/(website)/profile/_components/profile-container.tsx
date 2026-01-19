@@ -6,6 +6,7 @@ import ProfilePicture from "./profile-picture"
 import PersonalInformationForm from "./personal-information-form"
 import { UserProfileApiResponse } from "./user-data-type"
 import VideoUpload from "./video-upload"
+import ProfileSettingSkeleton from "./personal-info-page-skeleton"
 
 const ProfileContainer = () => {
   const { data: session } = useSession()
@@ -28,7 +29,9 @@ const ProfileContainer = () => {
   
   // loading 
   if (isLoading) {
-    return <div className="py-20 text-center">Loading profile...</div>
+    return <div className="pt-6">
+      <ProfileSettingSkeleton/>
+    </div>
   }
 
   const user = data?.data?.user
