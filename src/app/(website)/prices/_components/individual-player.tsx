@@ -4,6 +4,8 @@ import RegisterAsIndividualPlayerForm from './register-as-individual-player-form
 import { useQuery } from '@tanstack/react-query';
 import { SubscriptionApiResponse } from './subscription-data-type';
 import { useSession } from 'next-auth/react';
+import IndividualPricingSkeleton from './individual-pricing-skeleton';
+import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
 
 const IndividualPlayer = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +13,7 @@ const IndividualPlayer = () => {
     const session = useSession();
     const token = (session?.data?.user as { accessToken: string })?.accessToken;
 
-    const { data } = useQuery<SubscriptionApiResponse>({
+    const { data, isLoading, error, isError } = useQuery<SubscriptionApiResponse>({
         queryKey: ["subscription-all"],
         queryFn: async () => {
             const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/subscription`, {
@@ -24,13 +26,27 @@ const IndividualPlayer = () => {
         }
     })
 
-    console.log(data)
+    // console.log(data)
 
     const subscriptionData = data?.data?.filter(
         (item) => item?.paymentType === "Individual"
     )
 
-    console.log(subscriptionData)
+    // console.log(subscriptionData)
+
+       if (isLoading) {
+            return <div className="py-6">
+                <IndividualPricingSkeleton />
+            </div>
+        }
+    
+        if (isError) {
+            const message =
+                error instanceof Error ? error.message : "Something went wrong!";
+            return <div className="pb-8">
+                <ErrorContainer message={message} />
+            </div>
+        }
 
 
     return (

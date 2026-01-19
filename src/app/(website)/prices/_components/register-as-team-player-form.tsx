@@ -35,10 +35,10 @@ const playerSchema = z.object({
 
 const formSchema = z.object({
   coachEmail: z
-  .string()
-  .min(1, { message: "Email is required." })
-  .email({ message: "Please enter a valid email address." }),
-   coachName: z.string().min(2, {
+    .string()
+    .min(1, { message: "Email is required." })
+    .email({ message: "Please enter a valid email address." }),
+  coachName: z.string().min(2, {
     message: "Coach Name must be at least 2 characters.",
   }),
 
@@ -85,13 +85,13 @@ const RegisterAsTeamPlayerForm = ({
       teamName: "",
       league: "",
       category: "",
-       players: [
-      { name: "", email: "", role: "player" }, 
-    ]
+      players: [
+        { name: "", email: "", role: "player" },
+      ]
     },
   })
 
-    const { fields, append, remove } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     control: form.control,
     name: "players",
   })
@@ -113,7 +113,7 @@ const RegisterAsTeamPlayerForm = ({
         }
       )
 
-       const teamData = await teamRes.json()
+      const teamData = await teamRes.json()
       if (!teamData?.success) {
         throw new Error(teamData?.message || "Team creation failed")
       }
@@ -160,7 +160,7 @@ const RegisterAsTeamPlayerForm = ({
 
       <Dialog open={open} onOpenChange={onOpenChange}>
 
-        <DialogContent className="max-w-3xl">
+        <DialogContent className="max-w-2xl">
           {/* Logo */}
           <Link href="/" className="flex items-center justify-center">
             <Image
@@ -172,19 +172,19 @@ const RegisterAsTeamPlayerForm = ({
             />
           </Link>
           <h4 className="text-2xl md:text-3xl lg:text-4xl text-[#131313] leading-[120%] font-normal text-center pb-2">Register As Team</h4>
-          <div className="h-[400px] md:h-[450px] lg:h-[550px] overflow-auto bg-white border-[2px] border-[#E7E7E7] shadow-[0px_0px_32px_0px_#0000001F] p-6 rounded-[16px]">
+          <div className="h-[250px] md:h-[300px] overflow-auto bg-white border-[2px] border-[#E7E7E7] shadow-[0px_0px_32px_0px_#0000001F] p-6 rounded-[16px]">
             {/* <h4 className="text-xl md:text-2xl lg:text-3xl text-[#131313] leading-[120%] font-normal text-center pb-6">Personal Information</h4> */}
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
 
-<FormField
+                <FormField
                   control={form.control}
                   name="coachName"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-base text-[#424242] leading-[150%] font-normal">Coach Name *</FormLabel>
                       <FormControl>
-                        <Input className="h-[48px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " placeholder="Enter Coach Name..." {...field} />
+                        <Input className="h-[42px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " placeholder="Enter Coach Name..." {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -197,7 +197,7 @@ const RegisterAsTeamPlayerForm = ({
                     <FormItem>
                       <FormLabel className="text-base text-[#424242] leading-[150%] font-normal">Email *</FormLabel>
                       <FormControl>
-                        <Input type="email" className="h-[48px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " placeholder="Enter Coach Email..." {...field} />
+                        <Input type="email" className="h-[42px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " placeholder="Enter Coach Email..." {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -210,7 +210,7 @@ const RegisterAsTeamPlayerForm = ({
                     <FormItem>
                       <FormLabel className="text-base text-[#424242] leading-[150%] font-normal">Team Name *</FormLabel>
                       <FormControl>
-                        <Input className="h-[48px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " placeholder="Enter Player Name..." {...field} />
+                        <Input className="h-[42px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " placeholder="Enter Player Name..." {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -230,7 +230,7 @@ const RegisterAsTeamPlayerForm = ({
                           onValueChange={field.onChange}
                           value={field.value}
                         >
-                          <SelectTrigger className="w-full h-[48px] py-2 px-3 rounded-[8px] border border-[#645949] text-base font-medium leading-[120%] text-[#131313]">
+                          <SelectTrigger className="w-full h-[42px] py-2 px-3 rounded-[8px] border border-[#645949] text-base font-medium leading-[120%] text-[#131313]">
                             <SelectValue placeholder="Select Category" />
                           </SelectTrigger>
                           <SelectContent className="h-[200px] overflow-y-auto">
@@ -268,7 +268,7 @@ const RegisterAsTeamPlayerForm = ({
                           onValueChange={field.onChange}
                           value={field.value}
                         >
-                          <SelectTrigger className="w-full h-[48px] py-2 px-3 rounded-[8px] border border-[#645949] text-base font-medium leading-[120%] text-[#131313]">
+                          <SelectTrigger className="w-full h-[42px] py-2 px-3 rounded-[8px] border border-[#645949] text-base font-medium leading-[120%] text-[#131313]">
                             <SelectValue placeholder="Select League" />
                           </SelectTrigger>
                           <SelectContent className="h-[200px] overflow-y-auto">
@@ -291,82 +291,82 @@ const RegisterAsTeamPlayerForm = ({
                 />
 
 
-              {/* PLAYERS */}
-              <div className="bg-[#E9F6E9] p-4 rounded-xl space-y-4">
-                <p className="font-medium">Player names (10+ names) *</p>
+                {/* PLAYERS */}
+                <div className="bg-[#E9F6E9] p-4 rounded-xl space-y-4">
+                  <p className="font-medium">Player names (10+ names) *</p>
 
-                {fields.map((field, index) => (
-                  <div key={field.id} className="bg-[#F5FFF5] p-4 rounded-lg relative space-y-3">
-                    <p className="text-sm font-medium">Player {index + 1}</p>
+                  {fields.map((field, index) => (
+                    <div key={field.id} className="bg-[#F5FFF5] p-4 rounded-lg relative space-y-3">
+                      <p className="text-sm font-medium">Player {index + 1}</p>
 
-                    <FormField
-                      control={form.control}
-                      name={`players.${index}.name`}
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <Input className="h-[44px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] "  placeholder="Player name" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name={`players.${index}.email`}
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <Input className="h-[44px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] "  type="email" placeholder="Player email" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name={`players.${index}.role`}
-                      render={({ field }) => (
-                        <FormItem>
-                          <Select onValueChange={field.onChange} value={field.value}>
+                      <FormField
+                        control={form.control}
+                        name={`players.${index}.name`}
+                        render={({ field }) => (
+                          <FormItem>
                             <FormControl>
-                              <SelectTrigger className="h-[44px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " >
-                                <SelectValue placeholder="Select role" />
-                              </SelectTrigger>
+                              <Input className="h-[44px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " placeholder="Player name" {...field} />
                             </FormControl>
-                            <SelectContent>
-                              <SelectItem value="player">Player</SelectItem>
-                              <SelectItem value="gk">Goalkeeper</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </FormItem>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name={`players.${index}.email`}
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input className="h-[44px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " type="email" placeholder="Player email" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name={`players.${index}.role`}
+                        render={({ field }) => (
+                          <FormItem>
+                            <Select onValueChange={field.onChange} value={field.value}>
+                              <FormControl>
+                                <SelectTrigger className="h-[44px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " >
+                                  <SelectValue placeholder="Select role" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                <SelectItem value="player">Player</SelectItem>
+                                <SelectItem value="gk">Goalkeeper</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </FormItem>
+                        )}
+                      />
+
+                      {fields.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => remove(index)}
+                          className="bg-red-500 absolute top-2 right-2 text-white p-1 rounded-[10px]"
+                        >
+                          <X size={16} />
+                        </button>
                       )}
-                    />
+                    </div>
+                  ))}
 
-                    {fields.length > 1 && (
-                      <button
-                        type="button"
-                        onClick={() => remove(index)}
-                        className="bg-red-500 absolute top-2 right-2 text-white p-1 rounded-[10px]"
-                      >
-                        <X size={16} />
-                      </button>
-                    )}
+                  <div className="flex items-center justify-center">
+                    <button
+                      type="button"
+                      onClick={() => append({ name: "", email: "", role: "player" })}
+                      className="flex items-center gap-2 text-green-700 text-base font-semibold"
+                    >
+                      <Plus /> Add Player
+                    </button>
                   </div>
-                ))}
-
-                <div className="flex items-center justify-center">
-                  <button
-                  type="button"
-                  onClick={() => append({ name: "", email: "", role: "player" })}
-                  className="flex items-center gap-2 text-green-700 text-base font-semibold"
-                >
-                  <Plus /> Add Player
-                </button>
-                  </div>
-              </div>
+                </div>
 
                 <Button disabled={isPending} className="w-full h-[47px] rounded-[8px] text-[#F2F2F2] text-base " type="submit"><LockKeyhole /> {isPending ? "Processing..." : "Make Your Payment"}</Button>
               </form>

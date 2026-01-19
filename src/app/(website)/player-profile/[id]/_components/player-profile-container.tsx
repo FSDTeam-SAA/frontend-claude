@@ -16,6 +16,8 @@ import AttackingStats from './attacking-stats'
 import DistributionGkStats from './distribution-gk-stats'
 import DistributionPlayerStats from './distribution-player-stats'
 import SetPieces from './set-pieces'
+import GkStats from './gk-stats'
+import SimilarPlayers from './similar-players'
 
 const PlayerProfileContainer = ({id}:{id:string}) => {
 
@@ -47,20 +49,26 @@ const PlayerProfileContainer = ({id}:{id:string}) => {
         </div>
       </div>
 
-
-      {/* national team */}
-      <section>
-        <NationalTeam data={data?.data } isLoading={isLoading} error={error} isError={isError} />
-      </section>
-
       {/* Transfer History */}
       <section>
         <TransferHistory data={data?.data } isLoading={isLoading} error={error} isError={isError} />
       </section>
 
 
+      {/* national team */}
+      <section>
+        <NationalTeam data={data?.data } isLoading={isLoading} error={error} isError={isError} />
+      </section>
 
+      {/* GK Stats  */}
+      <section>
+        {
+          playerRole == "gk" && <GkStats data={data?.data } isLoading={isLoading} error={error} isError={isError} />
+        }
+        
+      </section>
 
+    
       {/* defensive stats section  */}
       <section>
         <DefensiveStats data={data?.data } isLoading={isLoading} error={error} isError={isError} />
@@ -68,7 +76,10 @@ const PlayerProfileContainer = ({id}:{id:string}) => {
 
       {/* Attacking stats section  */}
       <section>
-        <AttackingStats data={data?.data } isLoading={isLoading} error={error} isError={isError}/>
+        {
+          playerRole == "player" && <AttackingStats data={data?.data } isLoading={isLoading} error={error} isError={isError}/>
+        }
+        
       </section>
 
         {/* Distribution stats section  */}
@@ -78,15 +89,23 @@ const PlayerProfileContainer = ({id}:{id:string}) => {
         }
       </section>
 
-      {/* fouls section  */}
-      <section>
-        <Fouls data={data?.data } isLoading={isLoading} error={error} isError={isError} />
-      </section>
-
       {/* set pieces section  */}
       <section>
-        <SetPieces data={data?.data } isLoading={isLoading} error={error} isError={isError} />
+        {
+          playerRole == "player" && <SetPieces data={data?.data } isLoading={isLoading} error={error} isError={isError} />
+        }
+        
       </section>
+
+      {/* fouls section  */}
+      <section>
+        {
+          playerRole == "player" && <Fouls data={data?.data } isLoading={isLoading} error={error} isError={isError} />
+        }
+        
+      </section>
+
+      
 
        {/* last player report section  */}
       <section>
@@ -96,6 +115,11 @@ const PlayerProfileContainer = ({id}:{id:string}) => {
       {/* highlight video  */}
       <section>
         <HighlightsVideo data={data?.data } isLoading={isLoading} error={error} isError={isError} />
+      </section>
+
+      {/* similar players  */}
+      <section>
+        <SimilarPlayers data={data?.data } isLoading={isLoading} error={error} isError={isError} />
       </section>
 
       

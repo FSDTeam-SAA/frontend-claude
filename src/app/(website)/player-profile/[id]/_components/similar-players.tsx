@@ -1,10 +1,12 @@
 
+
+
 import React from 'react'
 import { UserProfile } from './player-data-type';
 import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
 import CommonSkeleton from './common-skeleton';
 
-const SetPieces = ({
+const SimilarPlayers = ({
     data,
     isLoading,
     error,
@@ -37,7 +39,7 @@ const SetPieces = ({
         <div className='py-6'>
             <div className="container  bg-white rounded-[16px] p-6 shadow-[0px_4px_24px_0px_#00000014
 ]">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl text-primary font-normal leading-[120%] pb-5 md:pb-6">Set Pieces</h3>
+                <h3 className="text-2xl md:text-3xl lg:text-4xl text-primary font-normal leading-[120%] pb-5 md:pb-6">SIMILAR PLAYERS</h3>
                 <div>
                     {
                         personalInfo?.map((info) => {
@@ -60,4 +62,4 @@ const SetPieces = ({
     )
 }
 
-export default SetPieces
+export default SimilarPlayers

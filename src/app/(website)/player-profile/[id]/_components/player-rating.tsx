@@ -10,7 +10,6 @@ import {
   type LabelProps,
 } from "recharts"
 
-import PlayerInfoSkeleton from './profile-info-skeleton';
 import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
 
 import { Card, CardContent } from "@/components/ui/card"
@@ -20,6 +19,7 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/components/ui/chart"
+import PlayerRatingSkeleton from './player-rating-skeleton';
 
 
 const CustomBarLabel: React.FC<LabelProps> = ({
@@ -74,7 +74,7 @@ const PlayerRating = ({
 
     if (isLoading) {
         return <div className="pt-0">
-            <PlayerInfoSkeleton />
+            <PlayerRatingSkeleton />
         </div>
     }
 

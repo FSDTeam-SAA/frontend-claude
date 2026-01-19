@@ -84,7 +84,7 @@ const faqItems = [
         "No. To be noticed, at least one report per month is required during the season. The more proof of performance you provide, the stronger your profile becomes.",
     },
      {
-      question: "Who selects the matches for evaluation?”",
+      question: "Who selects the matches for evaluation?",
       answer:
         "You choose the match you want us to evaluate. We must be notified at least 72 hours before the match",
     },
