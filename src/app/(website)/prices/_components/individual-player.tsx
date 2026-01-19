@@ -35,7 +35,7 @@ const IndividualPlayer = () => {
     // console.log(subscriptionData)
 
        if (isLoading) {
-            return <div className="py-6">
+            return <div className="container py-6">
                 <IndividualPricingSkeleton />
             </div>
         }

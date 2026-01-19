@@ -370,8 +370,8 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 z-50">
       <header className="w-full border-b border-border bg-white">
-        <nav className="container mx-auto px-4 py-3 lg:px-8">
-          <div className="flex items-center justify-between gap-7">
+        <nav className="container mx-auto px-4 py-3 ">
+          <div className="flex items-center justify-between gap-5">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 flex-shrink-0">
               <Image
@@ -398,7 +398,7 @@ const Navbar = () => {
                 Home
               </Link>
 
-               <Link
+              <Link
                 href="/services"
                 className={`text-sm md:text-[15px] hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/services" ? "border-b-[2px] border-primary" : "border-0"
                   }`}
@@ -406,7 +406,7 @@ const Navbar = () => {
                 Services
               </Link>
 
-               <Link
+              <Link
                 href="/profiles"
                 className={`text-sm md:text-[15px] hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/profiles" ? "border-b-[2px] border-primary" : "border-0"
                   }`}
@@ -414,7 +414,7 @@ const Navbar = () => {
                 Profiles
               </Link>
 
-               {/* <Link
+              {/* <Link
                 href="/player-evaluation-program"
                 className={`text-sm md:text-base hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/contact-us" ? "border-b-[2px] border-primary" : "border-0"
                   }`}
@@ -429,7 +429,7 @@ const Navbar = () => {
               >
                 Analytic Soccer+ Coming Soon
               </Link>
-              
+
               {/* Services Dropdown - Desktop */}
               {/* <DropdownMenu modal={false} open={desktopServicesOpen}
                 onOpenChange={setDesktopServicesOpen}>
@@ -473,7 +473,7 @@ const Navbar = () => {
               >
                 Prices
               </Link>
-             
+
             </div>
 
             {/* CTA Buttons */}
@@ -592,21 +592,21 @@ const Navbar = () => {
                 </div>
               )} */}
 
-               <Link
+              <Link
                 href="/services"
                 className={`w-fit text-sm md:text-base hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/services" ? "border-b-[2px] border-primary" : "border-0"
                   }`}
               >
                 Services
               </Link>
-  <Link
+              <Link
                 href="/profiles"
                 className={`w-fit text-sm md:text-base hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/profiles" ? "border-b-[2px] border-primary" : "border-0"
                   }`}
               >
                 Profiles
               </Link>
-                {/* <Link
+              {/* <Link
                 href="/player-evaluation-program"
                 className={`w-fit text-sm md:text-base hover:text-primary leading-[150%] text-[#131313] font-normal transition-all ease-in-out duration-300 ${pathname === "/contact-us" ? "border-b-[2px] border-primary" : "border-0"
                   }`}
@@ -629,7 +629,7 @@ const Navbar = () => {
               >
                 Prices
               </Link>
-            
+
 
               <div className="flex items-center justify-between gap-4 pt-2">
                 {status === "authenticated" && user ? (
