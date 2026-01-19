@@ -111,7 +111,7 @@ const ProfileFollow = ({ id, followers }: ProfileFollowProps) => {
           ${
             isFollowing
               ? "bg-primary text-white "
-              : "bg-gray-200 text-gray-800 border-2 border-primary"
+              : "bg-gray-200 hover:bg-primary text-gray-800 hover:text-white border-2 border-primary"
           }
         `}
       >

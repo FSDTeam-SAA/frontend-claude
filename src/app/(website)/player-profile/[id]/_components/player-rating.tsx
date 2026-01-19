@@ -93,14 +93,14 @@ const PlayerRating = ({
     if (!ratingData) return null;
   return (
     <div className="bg-white shadow-[0px_4px_16px_0px_#00000014] rounded-[16px] p-5">
-      <h4 className="text-xl md:text-3xl lg:text-4xl font-normal leading-[120%] text-[#131313] pb-4">
+      <h4 className="text-xl md:text-3xl lg:text-4xl font-normal leading-[120%] text-[#131313] pb-2">
         PLAYER RATINGS FROM LAST {gameCount} GAME{gameCount > 1 ? "S" : ""}
       </h4>
 
       <Card>
         <CardContent>
-          <ChartContainer config={chartConfig} className="w-full h-[288px]">
-            <BarChart data={ratingData} margin={{ top: 20 }}>
+          <ChartContainer config={chartConfig} className="w-full h-[290px]">
+            <BarChart data={ratingData} margin={{ top: 32 }}>
               <CartesianGrid vertical={false} />
 
               <XAxis

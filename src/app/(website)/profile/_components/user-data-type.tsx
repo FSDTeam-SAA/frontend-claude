@@ -42,7 +42,7 @@ export interface User {
 
   profileImage: string;
   verified: boolean;
-
+  phone: string;
   position: string[];
   playingVideo: string[];
 
@@ -83,50 +83,4 @@ export interface User {
 
   __v: number;
 }
-
-
-
-// export interface User {
-//   subscription: string | null
-//   _id: string
-//   firstName: string
-//   lastName: string
-//   email: string
-//   password: string
-//   role: "admin" | "user" | string
-//   profileImage: string
-//   verified: boolean
-//   league: string
-//   category: string
-//   position: string[]
-//   socialMedia: string[]
-//   playingVideo: string[]
-//   createdAt: string
-//   updatedAt: string
-//   __v: number
-
-//   // Extra profile fields
-//   agent: string
-//   birthdayPlace: string
-//   citizenship: string
-//   currentClub: string
-//   dob: string
-//   foot: "right" | "left" | string
-//   gender: "male" | "female" | "other" | string
-//   gpa: string
-//   hight: string
-//   weight: string
-//   inSchoolOrCollege: boolean
-//   phone: string
-//   satAct: string
-//   institute: string
-//   jerseyNumber: string
-//   accessLavel: string[]
-//   isSubscription: boolean
-//   lastLogin: string
-// }
-
-
-
-
 
