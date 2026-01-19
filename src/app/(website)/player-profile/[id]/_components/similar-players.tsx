@@ -19,7 +19,7 @@ const SimilarPlayers = ({
 }) => {
 
     if (isLoading) {
-        return <div className="pb-0">
+        return <div className="pb-8">
             <CommonSkeleton />
         </div>
     }

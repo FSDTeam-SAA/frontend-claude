@@ -807,7 +807,7 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                                         <div className="flex items-center space-x-3">
                                                             <RadioGroupItem value="college / university" id="college / university" />
                                                             <label htmlFor="college / university" className="cursor-pointer text-base font-medium text-[#131313]">
-                                                                College / University
+                                                                College/University
                                                             </label>
                                                         </div>
                                                     </RadioGroup>

@@ -15,6 +15,7 @@ import RatingCard from './rating-card';
 import PlayerInfoSkeleton from './profile-info-skeleton';
 import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
 import { UserProfile } from './player-data-type';
+import ProfileFollow from './profile-follow';
 
 const PlayerInfo = ({
     data,
@@ -166,6 +167,9 @@ const PlayerInfo = ({
                         </li> */}
 
 
+                        <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Followers</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.followers?.length || "N/A"}</span></li>
+
+
 
 
                         
@@ -190,7 +194,7 @@ const PlayerInfo = ({
 
                     <div className="flex flex-col gap-6 pt-6 md:pt-8 lg:pt-10">
                         <button className="w-full h-[40px] bg-primary flex items-center justify-center gap-2 rounded-full text-base font-normal leading-[120%]  text-white px-12 py-2">Share <Share2 className="text-white" /></button>
-                        <button className="w-full h-[40px] bg-primary flex items-center justify-center gap-2 rounded-full text-base font-normal leading-[120%]  text-white px-12 py-2">Follow</button>
+                        <ProfileFollow id={personalInfo?._id}   followers={personalInfo?.followers }/>
                     </div>
                 </div>
             </div>
