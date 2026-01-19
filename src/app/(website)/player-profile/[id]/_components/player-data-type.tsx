@@ -21,54 +21,151 @@ export interface UserProfile {
   transferHistory: TransferHistory[]
   gkDistributionStats: GKDistributionStats[]
   avarageRatting: AvarageRatting 
+  semelierPlayer: SimilarPlayer[];
 }
 
 
-export interface User {
-  _id: string
-  firstName: string
-  lastName: string
-  email: string
-  // role: string
-  role: "admin" | "player" | "gk";
-  provider: string
-  profileImage: string
-  verified: boolean
-  position: string[]
-  socialMedia?: SocialMedia[];
-  playingVideo: string[]
-  isSubscription: boolean
-  subscription: string
-  createdAt: string
-  updatedAt: string
-  lastLogin: string
-  birthdayPlace: string
-  category: string
-  citizenship: string
-  currentClub: string
-  phone: string
-  agent:string
-  dob: string
-  foot: string
-  gender: string
-  gpa: string
-  hight: string
-  inSchoolOrCollege: boolean
-  institute: string
-  league: string
-  weight: string
-  jerseyNumber: string
-  teamName: string
-  age: number
-  subscriptionExpiry: string
-  __v: number
+export interface SimilarPlayer {
+  _id: string;
+  name: string;
+  profileImage: string;
+
+  position: string[];
+
+  game: number;
+  avgRating: number;
+  similarity: number;
+
+  goals: number;
+  assists: number;
+
+  nationalTeam: NationalTeam;
+  lastTransfer: LastTransfer;
 }
+
+export interface LastTransfer {
+  season: string;
+  leftClub: string;
+  joinedClub: string;
+  joinedClubCountery: string;
+}
+
+export interface NationalTeam {
+  teamName: string;
+  match: number;
+  goals: number;
+  flag: string;
+}
+
+
+
+
 
 export interface SocialMedia {
+  _id: string;
   name: string;
   url: string;
-  _id: string;
 }
+
+export interface User {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
+  provider: "credentials" | "google" | "github";
+  profileImage: string;
+  verified: boolean;
+
+  position: string[];
+  playingVideo: string[];
+
+  isSubscription: boolean;
+  subscription: string;
+  subscriptionExpiry: string; // ISO date string
+
+  createdAt: string;
+  updatedAt: string;
+  lastLogin: string;
+  __v: number;
+
+  birthdayPlace: string;
+  category: string;
+  citizenship: string;
+  currentClub: string;
+  dob: string; // ISO date string
+  foot: "left" | "right" | "both";
+  gender: "male" | "female" | "other";
+
+  gpa: string;
+  hight: string;
+  weight: string;
+
+  inSchoolOrCollege: boolean;
+  institute: string;
+  league: string;
+
+  jerseyNumber: string;
+  teamName: string;
+
+  followers: string[];
+  following: string[];
+
+  age: number;
+
+  socialMedia: SocialMedia[];
+
+  agent: string;
+}
+
+
+// export interface User {
+//   _id: string
+//   firstName: string
+//   lastName: string
+//   email: string
+//   // role: string
+//   role: "admin" | "player" | "gk";
+//   provider: string
+//   profileImage: string
+//   verified: boolean
+//   position: string[]
+//   socialMedia?: SocialMedia[];
+//   playingVideo: string[]
+//   isSubscription: boolean
+//   subscription: string
+//   createdAt: string
+//   updatedAt: string
+//   lastLogin: string
+//   birthdayPlace: string
+//   category: string
+//   citizenship: string
+//   currentClub: string
+//   phone: string
+//   agent:string
+//   dob: string
+//   foot: string
+//   gender: string
+//   gpa: string
+//   hight: string
+//   inSchoolOrCollege: boolean
+//   institute: string
+//   league: string
+//   weight: string
+//   jerseyNumber: string
+//   teamName: string
+//   age: number
+//   subscriptionExpiry: string
+//   __v: number
+// }
+
+// export interface SocialMedia {
+//   name: string;
+//   url: string;
+//   _id: string;
+// }
+
+
 
 export interface AttackingStats {
   _id: string
@@ -248,6 +345,8 @@ export interface DistributionStats {
   turnoverConceded: number
 
   mostPassesPlayerBetween: number
+  passTheMost: string
+  ballTheMost: string
 
   createdAt: string
   updatedAt: string

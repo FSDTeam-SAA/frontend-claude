@@ -45,7 +45,7 @@ const [subscriptionId, setSubscriptionId] = useState<string | null>(null);
     // console.log(subscriptionData)
 
        if (isLoading) {
-            return <div className="pb-6">
+            return <div className="container py-10">
                 <TeamPricingSkeleton />
             </div>
         }

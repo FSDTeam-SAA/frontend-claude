@@ -172,7 +172,7 @@ const RegisterAsIndividualPlayerForm = ({
           <div className="bg-white border-[2px] border-[#E7E7E7] shadow-[0px_0px_32px_0px_#0000001F] p-3 rounded-[16px]">
             <h4 className="text-xl md:text-2xl lg:text-3xl text-[#131313] leading-[120%] font-normal text-center pb-1">Personal Information</h4>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 overflow-auto h-[200px] md:h-[250px] p-2">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 overflow-auto h-[200px] md:h-[250px] lg:h-[290px] p-2">
 
                 <FormField
                   control={form.control}

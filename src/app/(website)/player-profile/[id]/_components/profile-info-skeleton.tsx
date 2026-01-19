@@ -39,6 +39,7 @@ export default function PlayerInfoSkeleton() {
 
           {/* Share Button Skeleton */}
           <Skeleton className="h-[40px] w-full rounded-full" />
+          <Skeleton className="h-[40px] w-full rounded-full" />
         </div>
 
       </div>

@@ -8,7 +8,7 @@ const AnalyticSoccerPage = () => {
             <div className="md:col-span-1 h-full flex flex-col justify-center">
                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-primary leading-[150%] pb-2 md:pb-5 lg:pb-6">Analytic Soccer+ Presents</h3>
                 <p className='text-sm md:text-base text-[#424242] font-normal leading-[150%] py-3 md:py-4'>The Player Evaluation Program (U9–U18) is a long-term process that helps us monitor how your child is growing as a player.</p>
-                <h4 className='text-lg md:text-xl lg:text-2xl text-[#424242] leading-[150%] font-normal'>The program follows progress over time and looks at several important factors, including:</h4>
+                <h4 className='text-sm md:text-base text-[#424242] leading-[150%] font-normal'>The program follows progress over time and looks at several important factors, including :</h4>
 
                 <ul className='py-3 md:py-4'>
                     <li className='text-sm md:text-base text-[#424242] leading-[150%] font-normal'>•  Physical and emotional maturity</li>
