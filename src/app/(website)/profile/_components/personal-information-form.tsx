@@ -53,6 +53,13 @@ const formSchema = z.object({
     lastName: z.string().min(2, {
         message: "Last Name must be at least 2 characters.",
     }),
+    phone: z
+  .string()
+  .min(9, { message: "Phone number must be at least 9 digits." })
+  .max(15, { message: "Phone number must be at most 15 digits." })
+  .regex(/^[0-9]+$/, {
+    message: "Phone number must contain only digits.",
+  }),
     jerseyNumber: z.string().min(1, {
         message: "Jersey Number must be at least 1 characters.",
     }),
@@ -167,6 +174,7 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
             lastName: user?.lastName || "",
             jerseyNumber: user?.jerseyNumber || "",
             email: user?.email || "",
+            phone: user?.phone || "",
             gender: user?.gender || "",
             hight: user?.hight || "",
             weight: user?.weight || "",
@@ -306,11 +314,7 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                     </FormItem>
                                 )}
                             />
-                        </div>
-
-
-
-                        <FormField
+                             <FormField
                             control={form.control}
                             name="email"
                             render={({ field }) => (
@@ -323,6 +327,26 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                 </FormItem>
                             )}
                         />
+
+                         <FormField
+                            control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">Phone Number</FormLabel>
+                                    <FormControl>
+                                        <Input className="w-full h-[47px]  border border-[#645949] rounded-[8px] text-[#131313] placeholder:text-[#929292] text-sm font-normal leading-[150%]" placeholder="enter your phone number" {...field} />
+                                    </FormControl>
+                                    <FormMessage className="text-red-500" />
+                                </FormItem>
+                            )}
+                        />
+                        
+                        </div>
+
+
+
+                       
 
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-7">

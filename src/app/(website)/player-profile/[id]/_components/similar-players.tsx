@@ -70,7 +70,7 @@ const SimilarPlayers = ({
                                     {/* LEFT: Profile */}
                                     <div className="flex items-center gap-4">
                                         <Image
-                                            src={item.profileImage || "/assets/images/no-item.jpg"}
+                                            src={item.profileImage || "/assets/images/no-user.jpg"}
                                             alt={`${item?.name || "image" }`}
                                             width={93}
                                             height={93}
@@ -160,87 +160,3 @@ const SimilarPlayers = ({
 
 export default SimilarPlayers;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from 'react'
-// import { itemProfile } from './player-data-type';
-// import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
-// import SimilarPlayersSkeleton from './similar-players-skeleton';
-// import Image from "next/image";
-
-// const SimilarPlayers = ({
-//     data,
-//     isLoading,
-//     error,
-//     isError,
-// }: {
-//     data?: itemProfile
-//     isLoading: boolean
-//     error: unknown
-//     isError: boolean
-// }) => {
-
-//     if (isLoading) {
-//         return <div className="container pb-8">
-//             <SimilarPlayersSkeleton />
-//         </div>
-//     }
-
-//     if (isError) {
-//         const message =
-//             error instanceof Error ? error.message : "Something went wrong!";
-//         return <div className="pb-8">
-//             <ErrorContainer message={message} />
-//         </div>
-//     }
-
-//     const personalInfo = data?.semelierPlayer;
-
-//     if (!personalInfo) return null;
-//     return (
-//         <div className='py-6'>
-//             <div className="container bg-white rounded-[16px] p-6 shadow-[0px_4px_24px_0px_#00000014]// ]">
-//                 <h3 className="text-2xl md:text-3xl lg:text-4xl text-primary font-normal leading-[120%] pb-5 md:pb-6">SIMILAR PLAYERS</h3>
-//                 <div>
-//                     {
-//                         personalInfo?.map((info) => {
-//                             return <ul key={info?.item._id} className="grid grid-cols-1 md:gris-cold-2 gap-10">
-
-//                                 <li>
-//                                     <div className='bg-[#E9EBF3] flex items-center gap-4 rounded-[16px] p-4'>
-//                                         <Image src={info?.item?.profileImage || "/assets/images/no-item.jpg"} alt="image" width={200} height={200} className="w-[93px] h-[93px] rounded-[8px] object-cover" />
-//                                         <div>
-//                                             <h4 className="text-lg md:text-xl text-[#131313] font-normal leading-[120%]">{info?.item?.firstName} {info?.item?.lastName}</h4>
-
-//                                             <div className="flex items-center gap-2 pt-3">
-//                                                 <Image src={info?.item?.profileImage || "/assets/images/no-item.jpg"} alt="image" width={200} height={200} className="w-6 h-6 rounded-[8px] object-cover" />
-//                                                 <p className="text-sm font-normal text-[#131313] leading-[150%]">{info?.item?.citizenship}</p>
-//                                             </div>
-
-
-//                                         </div>
-//                                     </div>
-//                                 </li>
-
-//                             </ul>
-//                         }
-//                         )}
-//                 </div>
-
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default SimilarPlayers

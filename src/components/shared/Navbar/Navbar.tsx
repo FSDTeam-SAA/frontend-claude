@@ -367,6 +367,9 @@ const Navbar = () => {
     }
   }
 
+  const profileImg = user?.profileImage ? user?.profileImage : "/assets/images/no-user.jpg";
+  console.log("image", profileImg)
+
   return (
     <div className="sticky top-0 z-50">
       <header className="w-full border-b border-border bg-white">
@@ -482,7 +485,7 @@ const Navbar = () => {
                 <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
                   <DropdownMenuTrigger>
                     <Image
-                      src={user?.profileImage || "/assets/images/no-user.jpg"}
+                      src={profileImg}
                       alt="user-img"
                       width={200}
                       height={200}

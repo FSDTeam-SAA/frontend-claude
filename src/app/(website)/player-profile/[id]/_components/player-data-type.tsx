@@ -96,7 +96,7 @@ export interface User {
   dob: string; // ISO date string
   foot: "left" | "right" | "both";
   gender: "male" | "female" | "other";
-
+  phone : string;
   gpa: string;
   hight: string;
   weight: string;
@@ -117,53 +117,6 @@ export interface User {
 
   agent: string;
 }
-
-
-// export interface User {
-//   _id: string
-//   firstName: string
-//   lastName: string
-//   email: string
-//   // role: string
-//   role: "admin" | "player" | "gk";
-//   provider: string
-//   profileImage: string
-//   verified: boolean
-//   position: string[]
-//   socialMedia?: SocialMedia[];
-//   playingVideo: string[]
-//   isSubscription: boolean
-//   subscription: string
-//   createdAt: string
-//   updatedAt: string
-//   lastLogin: string
-//   birthdayPlace: string
-//   category: string
-//   citizenship: string
-//   currentClub: string
-//   phone: string
-//   agent:string
-//   dob: string
-//   foot: string
-//   gender: string
-//   gpa: string
-//   hight: string
-//   inSchoolOrCollege: boolean
-//   institute: string
-//   league: string
-//   weight: string
-//   jerseyNumber: string
-//   teamName: string
-//   age: number
-//   subscriptionExpiry: string
-//   __v: number
-// }
-
-// export interface SocialMedia {
-//   name: string;
-//   url: string;
-//   _id: string;
-// }
 
 
 
