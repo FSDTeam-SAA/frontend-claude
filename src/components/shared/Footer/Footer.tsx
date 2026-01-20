@@ -62,8 +62,8 @@ const Footer = () => {
           </ul>
         </div>
         <div className="md:col-span-3">
-          <h4 className="text-lg md:text-xl font-semibold leading-[120%] text-[#2A2A2A] pb-4 md:pb-6 lg:pb-8">Subscribe To Our <span className="text-primary">NEWSLETTER</span></h4>
-          <p className="text-base md:text-lg leading-[120%] text-[#616161] font-normal">Connect with us on social media and <br /> stay in the loop :</p>
+          <h4 className="text-lg md:text-xl font-semibold leading-[120%] text-[#2A2A2A] pb-3 lg:pb-4">Subscribe To Our <span className="text-primary">NEWSLETTER</span></h4>
+          {/* <p className="text-base md:text-lg leading-[120%] text-[#616161] font-normal">Connect with us on social media and <br /> stay in the loop :</p> */}
           <div>
             <NewsletterSubscribe />
           </div>

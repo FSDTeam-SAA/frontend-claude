@@ -61,7 +61,7 @@ const [subscriptionId, setSubscriptionId] = useState<string | null>(null);
         <div className="py-10 md:py-16 lg:py-24">
             <div className="container ">
                 <h3 className='text-2xl md:text-3xl lg:text-[40px] text-[#131313] leading-[120%] font-normal text-center'>Pricing For Teams (minimum 10 players)</h3>
-                <p className='text-base text-[#424242] leading-[150%] font-normal text-center pt-4'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                {/* <p className='text-base text-[#424242] leading-[150%] font-normal text-center pt-4'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p> */}
                 <div className="grid grid-cols-1 md:grid-cols-6 gap-6 pt-10">
                 {sortedSubscriptionData?.sort()?.map((item, index) => {
                         const isFourth = index === 3;
@@ -78,7 +78,7 @@ const [subscriptionId, setSubscriptionId] = useState<string | null>(null);
                                 `}
                             >
                                 
-                                <div className="bg-[#006600] rounded-t-[16px] text-lg md:text-xl lg:text-2xl font-normal text-white leading-[120%] text-center py-6">
+                                <div className="bg-[#006600] rounded-t-[14px] text-lg md:text-xl lg:text-2xl font-normal text-white leading-[120%] text-center py-6">
                                     {item?.numberOfGames} games
                                 </div>
 

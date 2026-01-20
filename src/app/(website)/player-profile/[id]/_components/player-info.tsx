@@ -69,6 +69,9 @@ const PlayerInfo = ({
 ]">
                 <div className="md:col-span-1">
                     <Image src={personalInfo?.profileImage || "/assets/images/no-user.jpg"} alt={personalInfo?.firstName || "profile image"} width={1000} height={1000} className="w-auto h-auto object-cover rounded-full" />
+
+                    <p className="text-base md:text-lg lg:text-xl font-semibold text-black pt-4 leading-[150%] text-center">{personalInfo?.firstName} {personalInfo?.lastName}</p>
+
                 </div>
                 <div className="md:col-span-3">
                     <ul className="grid gris-cols-1 md:gris-cols-2 lg:grid-cols-3 gap-4">
@@ -99,10 +102,18 @@ const PlayerInfo = ({
 
                         <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Category</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.category || "N/A"}</span></li>
                         <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Position</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.position?.map(p => p.toUpperCase()).join("-") || "N/A"}</span></li>
-                        <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Institute Name</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.institute || "N/A"}</span></li>
-                        <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Current Club</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.currentClub || "N/A"}</span></li>
+
+                         <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Current Club</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.currentClub || "N/A"}</span></li>
+
+
+                        
+                          {/* <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Agent</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.agent || "N/A"}</span></li> */}
 
                         <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Agent</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.agent || "N/A"}</span></li>
+ 
+                       <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>School Name</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.schoolName || "N/A"}</span></li>
+
+                       
 
                         <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>GPA</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.gpa || "N/A"}</span></li>
 
@@ -169,6 +180,7 @@ const PlayerInfo = ({
 
 
                         <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Followers</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.followers?.length || "N/A"}</span></li>
+                        {/* <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Institute Name</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.schoolName|| "N/A"}</span></li> */}
 
 
 

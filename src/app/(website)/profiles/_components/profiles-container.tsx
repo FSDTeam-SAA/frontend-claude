@@ -64,10 +64,10 @@ const ProfilesContainer = () => {
             <Table className="rounded-[16px] border border-[#E7E7E7] overflow-hidden">
                 <TableHeader>
                     <TableRow className="bg-[#079201] hover:bg-primary">
-                        <TableHead className="text-lg md:text-xl font-normal text-white leading-[120%] py-3 pl-10 md:pl-14 lg:pl-16">Players</TableHead>
-                        <TableHead className="text-lg md:text-xl font-normal text-white text-center leading-[120%] py-3">Position</TableHead>
-                        <TableHead className="text-lg md:text-xl font-normal text-white text-center leading-[120%] py-3">Age</TableHead>
-                        <TableHead className="text-lg md:text-xl font-normal text-white text-center leading-[120%] py-3 pr-10 md:pr-14 lg:pr-16">Nation</TableHead>
+                        <TableHead className="text-xs md:text-xl font-normal text-white leading-[120%] py-3 pl-10 md:pl-14 lg:pl-16">Players</TableHead>
+                        <TableHead className="text-xs md:text-xl font-normal text-white text-center leading-[120%] py-3">Position</TableHead>
+                        <TableHead className="text-xs md:text-xl font-normal text-white text-center leading-[120%] py-3">Age</TableHead>
+                        <TableHead className="text-xs md:text-xl font-normal text-white text-center leading-[120%] py-3 pr-10 md:pr-14 lg:pr-16">Nationality</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -77,18 +77,18 @@ const ProfilesContainer = () => {
 
                                 <TableCell className="">
                                     {/* <Link href="/player-profile"> */}
-                                    <div className="bg-[#E7F5E6] flex items-center gap-3 rounded-[8px] p-4">
-                                        <Image src={info?.profileImage || "/assets/images/no-flag.png"} alt={info?.firstName || "user name"} width={100} height={100} className="w-12 h-12 object-contain rounded-[8px]" />
-                                        <p className="text-base text-[#131313] leading-[150%] font-normal py-3">{info?.firstName || "N/A"} {info?.lastName || " "}</p>
+                                    <div className="bg-[#E7F5E6] flex flex-col  md:flex-row items-center gap-3 rounded-[8px] p-2 md:p-3 lg:p-4">
+                                        <Image src={info?.profileImage || "/assets/images/no-flag.png"} alt={info?.firstName || "user name"} width={100} height={100} className="w-8 md:w-10 lg:w-12 h-8 md:h-10 lg:h-12 object-contain rounded-[8px]" />
+                                        <p className="text-xs md:text-sm lg:text-base text-[#131313] leading-[150%] font-normal py-2 md:py-3">{info?.firstName || "N/A"} {info?.lastName || " "}</p>
                                     </div>
                                     {/* </Link> */}
                                 </TableCell>
                                 {/* <TableCell className="text-base text-[#131313] leading-[150%] font-normal py-3">{moment(info?.debut).format("DD / MM / YYYY")}</TableCell> */}
-                                <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3"> {info?.position?.map(p => p.toUpperCase()).join("-") || "N/A"}
+                                <TableCell className="text-xs md:text-sm lg:text-base text-[#131313] leading-[150%] text-center font-normal py-3"> {info?.position?.map(p => p.toUpperCase()).join("-") || "N/A"}
                                 </TableCell>
                                 {/* <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3">  {moment(info?.dob).format("DD / MM / YYYY")} </TableCell> */}
-                                <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3"> {info?.age || 0} </TableCell>
-                                <TableCell className="text-base text-[#131313] leading-[150%] text-center font-normal py-3"> {info?.citizenship || "N/A"} </TableCell>
+                                <TableCell className="text-xs md:text-sm lg:text-base text-[#131313] leading-[150%] text-center font-normal py-3"> {info?.age || 0} </TableCell>
+                                <TableCell className="text-xs md:text-sm lg:text-base text-[#131313] leading-[150%] text-center font-normal py-3"> {info?.citizenship || "N/A"} </TableCell>
                             </TableRow>
                         }
                         )}
@@ -102,7 +102,7 @@ const ProfilesContainer = () => {
     return (
         <div className='py-10'>
             <div className="container bg-white rounded-[16px] p-6 shadow-[0px_4px_16px_0px_#00000014]">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl text-primary font-normal leading-[120%] pb-5 md:pb-6">All PLAYERS</h3>
+                <h3 className="text-2xl md:text-3xl lg:text-4xl text-primary font-normal leading-[120%] pb-3 md:pb-5 lg:pb-6">All PLAYERS</h3>
                 <div>
                     <div>
                         {content}
@@ -112,7 +112,7 @@ const ProfilesContainer = () => {
                     {
                         totalPages > 1 && (
                             <div className="w-full flex items-center justify-between py-6">
-                                <p className="text-base font-normal text-[#707070] leading-[150%]">
+                                <p className="text-xs md:text-sm lg:text-base font-normal text-[#707070] leading-[150%]">
                                     Showing {currentPage} to 8 of {data?.meta?.total} results
                                 </p>
                                 <div>

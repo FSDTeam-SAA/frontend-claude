@@ -73,9 +73,9 @@ const DistributionPlayerStats = ({
                                 <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Crosses</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.crosses || "N/A"}</span></li>
                                 <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Step-in</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.stepIn || "N/A"}</span></li>
                                 <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Turnover Conceded</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.turnoverConceded || "N/A"}</span></li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Most Passes Player Between </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.mostPassesPlayerBetween || "N/A"}</span></li>
+                                {/* <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Most Passes Player Between </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.mostPassesPlayerBetween || "N/A"}</span></li> */}
                                  <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Who do you pass the to the most?</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.passTheMost || "N/A"}</span></li>
-                                <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Who Pass The ball to you the most?
+                                <li className="flex flex-col gap-2"><span className='text-base font-me text-[#616161] leading-[150%]'>who do pass the ball to you the most?
                                 </span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{info?.ballTheMost || "N/A"}</span></li>
                             </ul>
                             </div>

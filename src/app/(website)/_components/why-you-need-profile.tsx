@@ -16,7 +16,7 @@ const WhyYouNeedAProfile = () => {
         <p className="text-sm md:text-base text-[#616161] font-normal leading-[120%] py-4 md:py-5">
           Most amateur players today are invisible to the football market even if
           they <br />
-          perform well, no one outside their local area sees them.
+          perform well. No one outside their local area sees them.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-6 md:py-10 lg:py-12">

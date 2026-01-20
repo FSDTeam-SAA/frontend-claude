@@ -45,7 +45,6 @@ const socialMediaNameEnum = z.enum([
     "TikTok",
 ]);
 
-
 const formSchema = z.object({
     firstName: z.string().min(2, {
         message: "First Name must be at least 2 characters.",
@@ -53,13 +52,16 @@ const formSchema = z.object({
     lastName: z.string().min(2, {
         message: "Last Name must be at least 2 characters.",
     }),
+      schoolName: z.string().min(2, {
+        message: "School Name must be at least 2 characters.",
+    }),
     phone: z
-  .string()
-  .min(9, { message: "Phone number must be at least 9 digits." })
-  .max(15, { message: "Phone number must be at most 15 digits." })
-  .regex(/^[0-9]+$/, {
-    message: "Phone number must contain only digits.",
-  }),
+        .string()
+        .min(7, { message: "Phone number is too short." })
+        .max(20, { message: "Phone number is too long." })
+        .regex(/^\+?[0-9]{7,15}$/, {
+            message: "Enter a valid international phone number (e.g. +1 456765432)",
+        }),
     jerseyNumber: z.string().min(1, {
         message: "Jersey Number must be at least 1 characters.",
     }),
@@ -79,8 +81,12 @@ const formSchema = z.object({
             url: z.string().url().optional(),
         })
     ).optional(),
+    
     citizenship: z.string().min(2, {
         message: "citizenship must be at least 2 characters.",
+    }),
+    nationality: z.string().min(2, {
+        message: "nationality must be at least 2 characters.",
     }),
     currentClub: z.string().min(2, {
         message: "Current Club must be at least 2 characters.",
@@ -179,6 +185,7 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
             hight: user?.hight || "",
             weight: user?.weight || "",
             agent: user?.agent || "",
+            schoolName: user?.schoolName || "",
             socialMedia: user?.socialMedia
                 ? user.socialMedia.map((item) => ({
                     name: item.name as
@@ -190,7 +197,8 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                     url: item.url,
                 }))
                 : [],
-            citizenship: user?.citizenship || "",
+            citizenship: user?.citizenship || "",  
+            nationality: user?.nationality || "",
             currentClub: user?.currentClub || "",
             league: user?.league || "",
             category: user?.category || "",
@@ -314,21 +322,21 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                     </FormItem>
                                 )}
                             />
-                             <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">Email Address</FormLabel>
-                                    <FormControl>
-                                        <Input disabled className="w-full h-[47px]  border border-[#645949] rounded-[8px] text-[#131313] placeholder:text-[#929292] text-sm font-normal leading-[150%]" placeholder="alma.lawson@example.com" {...field} />
-                                    </FormControl>
-                                    <FormMessage className="text-red-500" />
-                                </FormItem>
-                            )}
-                        />
+                            <FormField
+                                control={form.control}
+                                name="email"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">Email Address</FormLabel>
+                                        <FormControl>
+                                            <Input disabled className="w-full h-[47px]  border border-[#645949] rounded-[8px] text-[#131313] placeholder:text-[#929292] text-sm font-normal leading-[150%]" placeholder="alma.lawson@example.com" {...field} />
+                                        </FormControl>
+                                        <FormMessage className="text-red-500" />
+                                    </FormItem>
+                                )}
+                            />
 
-                         <FormField
+                            {/* <FormField
                             control={form.control}
                             name="phone"
                             render={({ field }) => (
@@ -340,13 +348,118 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                     <FormMessage className="text-red-500" />
                                 </FormItem>
                             )}
-                        />
-                        
+                        /> */}
+
+                            <FormField
+                                control={form.control}
+                                name="phone"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">
+                                            Phone Number
+                                        </FormLabel>
+
+                                        <FormControl>
+                                            <div className="flex gap-3">
+                                                {/* Country Code */}
+                                                <Select
+                                                    value={field.value?.startsWith("+")
+                                                        ? field.value.split(" ")[0]
+                                                        : "+1"}
+                                                    onValueChange={(code) => {
+                                                        const number = field.value?.replace(/^\+\d+\s*/, "") || ""
+                                                        field.onChange(`${code} ${number}`)
+                                                    }}
+                                                >
+                                                    <SelectTrigger className="w-[110px] h-[47px] border border-[#645949] rounded-[8px]">
+                                                        <SelectValue />
+                                                    </SelectTrigger>
+                                                    <SelectContent className="h-[250px]  md:h-[300px] overflow-auto">
+                                                        {/* North America */}
+                                                        <SelectItem value="+1">🇺🇸 +1</SelectItem>
+                                                        {/* <SelectItem value="+1">🇨🇦 +1</SelectItem> */}
+
+                                                        {/* <SelectItem value="+1">🇺🇸/🇨🇦 +1</SelectItem> */}
+
+
+                                                        {/* Europe */}
+                                                        <SelectItem value="+44">🇬🇧 +44</SelectItem>
+                                                        <SelectItem value="+33">🇫🇷 +33</SelectItem>
+                                                        <SelectItem value="+49">🇩🇪 +49</SelectItem>
+                                                        <SelectItem value="+39">🇮🇹 +39</SelectItem>
+                                                        <SelectItem value="+34">🇪🇸 +34</SelectItem>
+                                                        <SelectItem value="+31">🇳🇱 +31</SelectItem>
+                                                        <SelectItem value="+46">🇸🇪 +46</SelectItem>
+                                                        <SelectItem value="+41">🇨🇭 +41</SelectItem>
+                                                        <SelectItem value="+48">🇵🇱 +48</SelectItem>
+                                                        <SelectItem value="+351">🇵🇹 +351</SelectItem>
+
+                                                        {/* Asia */}
+                                                        <SelectItem value="+880">🇧🇩 +880</SelectItem>
+                                                        <SelectItem value="+91">🇮🇳 +91</SelectItem>
+                                                        <SelectItem value="+92">🇵🇰 +92</SelectItem>
+                                                        <SelectItem value="+94">🇱🇰 +94</SelectItem>
+                                                        <SelectItem value="+86">🇨🇳 +86</SelectItem>
+                                                        <SelectItem value="+81">🇯🇵 +81</SelectItem>
+                                                        <SelectItem value="+82">🇰🇷 +82</SelectItem>
+                                                        <SelectItem value="+62">🇮🇩 +62</SelectItem>
+                                                        <SelectItem value="+60">🇲🇾 +60</SelectItem>
+                                                        <SelectItem value="+66">🇹🇭 +66</SelectItem>
+                                                        <SelectItem value="+63">🇵🇭 +63</SelectItem>
+
+                                                        {/* Middle East */}
+                                                        <SelectItem value="+971">🇦🇪 +971</SelectItem>
+                                                        <SelectItem value="+966">🇸🇦 +966</SelectItem>
+                                                        <SelectItem value="+974">🇶🇦 +974</SelectItem>
+                                                        <SelectItem value="+965">🇰🇼 +965</SelectItem>
+                                                        <SelectItem value="+968">🇴🇲 +968</SelectItem>
+                                                        <SelectItem value="+972">🇮🇱 +972</SelectItem>
+
+                                                        {/* Africa */}
+                                                        <SelectItem value="+20">🇪🇬 +20</SelectItem>
+                                                        <SelectItem value="+234">🇳🇬 +234</SelectItem>
+                                                        <SelectItem value="+254">🇰🇪 +254</SelectItem>
+                                                        <SelectItem value="+27">🇿🇦 +27</SelectItem>
+                                                        <SelectItem value="+212">🇲🇦 +212</SelectItem>
+
+                                                        {/* Oceania */}
+                                                        <SelectItem value="+61">🇦🇺 +61</SelectItem>
+                                                        <SelectItem value="+64">🇳🇿 +64</SelectItem>
+
+                                                        {/* South America */}
+                                                        <SelectItem value="+55">🇧🇷 +55</SelectItem>
+                                                        <SelectItem value="+54">🇦🇷 +54</SelectItem>
+                                                        <SelectItem value="+57">🇨🇴 +57</SelectItem>
+                                                        <SelectItem value="+56">🇨🇱 +56</SelectItem>
+                                                        <SelectItem value="+51">🇵🇪 +51</SelectItem>
+
+                                                    </SelectContent>
+                                                </Select>
+
+                                                {/* Phone Number */}
+                                                <Input
+                                                    placeholder="1712345678"
+                                                    value={field.value?.replace(/^\+\d+\s*/, "") || ""}
+                                                    onChange={(e) => {
+                                                        const code = field.value?.match(/^\+\d+/)?.[0] || "+1"
+                                                        field.onChange(`${code} ${e.target.value}`)
+                                                    }}
+                                                    className="flex-1 h-[47px] border border-[#645949] rounded-[8px]"
+                                                />
+                                            </div>
+                                        </FormControl>
+
+                                        <FormMessage className="text-red-500" />
+                                    </FormItem>
+                                )}
+                            />
+
+
                         </div>
 
 
 
-                       
+
 
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
@@ -805,9 +918,9 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                         name="institute"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">
+                                                {/* <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">
                                                     School Name
-                                                </FormLabel>
+                                                </FormLabel> */}
                                                 <FormControl>
                                                     <RadioGroup
                                                         onValueChange={field.onChange}
@@ -846,7 +959,7 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                 {/* GPA field: show only if College / University is selected */}
                                 {/* GPA field: show if High School OR College / University */}
                                 {["high school", "college / university"].includes(form.watch("institute") ?? "") && (
-                                    <div className="md:col-span-1">
+                                    <div className="md:col-span-1 -mt-9">
                                         <FormField
                                             control={form.control}
                                             name="gpa"
@@ -866,6 +979,7 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                                 </FormItem>
                                             )}
                                         />
+
                                     </div>
                                 )}
 
@@ -963,6 +1077,35 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                 
                             </div>
                         )} */}
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+                            <FormField
+                                control={form.control}
+                                name="schoolName"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">School Name</FormLabel>
+                                        <FormControl>
+                                            <Input className="w-full h-[47px]  border border-[#645949] rounded-[8px] text-[#131313] placeholder:text-[#929292] text-sm font-normal leading-[150%]" placeholder="AAAAAA" {...field} />
+                                        </FormControl>
+                                        <FormMessage className="text-red-500" />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="nationality"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">Nationality</FormLabel>
+                                        <FormControl>
+                                            <Input className="w-full h-[47px]  border border-[#645949] rounded-[8px] text-[#131313] placeholder:text-[#929292] text-sm font-normal leading-[150%]" placeholder="AAAAAA" {...field} />
+                                        </FormControl>
+                                        <FormMessage className="text-red-500" />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
 
 
 

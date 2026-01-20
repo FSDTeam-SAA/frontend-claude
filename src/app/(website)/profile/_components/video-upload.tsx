@@ -380,7 +380,7 @@ export default function VideoUpload({ videos }: { videos: string[] }) {
           {uploading ? "Uploading..." : "Click to Add Videos"}
         </p>
         <p className="font-semibold text-gray-500">
-          Only 3 videos allow
+          Only 3 videos allowed
         </p>
       </div>
 
