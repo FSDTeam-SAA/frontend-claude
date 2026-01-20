@@ -26,7 +26,7 @@ const SocialShareContent: React.FC<ShareComponentProps> = ({
 
   const shareUrl =
     typeof window !== "undefined"
-      ? `https://claude-frontend-livid-gold.vercel.app/player-profile/${postId}`
+      ? `${window.location.origin}/player-profile/${postId}`
       : "";
 
   const toggleShare = () => setOpen((prev) => !prev);

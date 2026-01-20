@@ -55,13 +55,16 @@ const formSchema = z.object({
       schoolName: z.string().min(2, {
         message: "School Name must be at least 2 characters.",
     }),
-    phone: z
-        .string()
-        .min(7, { message: "Phone number is too short." })
-        .max(20, { message: "Phone number is too long." })
-        .regex(/^\+?[0-9]{7,15}$/, {
-            message: "Enter a valid international phone number (e.g. +1 456765432)",
-        }),
+    phoneCode: z.string().min(1),
+  phone: z.string().min(6),
+    // phone: z.string().min(7, { message: "Phone number is too short." }),
+    // phone: z
+    //     .string()
+    //     .min(7, { message: "Phone number is too short." })
+    //     .max(20, { message: "Phone number is too long." })
+    //     .regex(/^\+?[0-9]{7,15}$/, {
+    //         message: "Enter a valid international phone number (e.g. +1 456765432)",
+    //     }),
     jerseyNumber: z.string().min(1, {
         message: "Jersey Number must be at least 1 characters.",
     }),
@@ -131,14 +134,6 @@ const formSchema = z.object({
 })
 
 
-// .refine((data) => {
-//     if (data.inSchoolOrCollege === "yes") {
-//         if (!data.institute || data.institute.trim().length < 2) return false
-//         // if (!data.gpa || data.gpa.trim().length === 0) return false
-//     }
-//     return true
-// }, { message: "Institute Name and GPA required", path: ["institute"] })
-
 
 
 interface PersonalInformationFormProps {
@@ -180,7 +175,10 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
             lastName: user?.lastName || "",
             jerseyNumber: user?.jerseyNumber || "",
             email: user?.email || "",
-            phone: user?.phone || "",
+            // phone: user?.phone || "",
+            // phone: `${defaultCountryCode} ${defaultNumber}`.trim(),
+            phoneCode: user?.phoneCode || "+880",
+      phone: user?.phone || "",
             gender: user?.gender || "",
             hight: user?.hight || "",
             weight: user?.weight || "",
@@ -336,45 +334,27 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                 )}
                             />
 
-                            {/* <FormField
-                            control={form.control}
-                            name="phone"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">Phone Number</FormLabel>
-                                    <FormControl>
-                                        <Input className="w-full h-[47px]  border border-[#645949] rounded-[8px] text-[#131313] placeholder:text-[#929292] text-sm font-normal leading-[150%]" placeholder="enter your phone number" {...field} />
-                                    </FormControl>
-                                    <FormMessage className="text-red-500" />
-                                </FormItem>
-                            )}
-                        /> */}
 
-                            <FormField
-                                control={form.control}
-                                name="phone"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">
-                                            Phone Number
-                                        </FormLabel>
+                         
 
-                                        <FormControl>
-                                            <div className="flex gap-3">
-                                                {/* Country Code */}
-                                                <Select
-                                                    value={field.value?.startsWith("+")
-                                                        ? field.value.split(" ")[0]
-                                                        : "+1"}
-                                                    onValueChange={(code) => {
-                                                        const number = field.value?.replace(/^\+\d+\s*/, "") || ""
-                                                        field.onChange(`${code} ${number}`)
-                                                    }}
-                                                >
-                                                    <SelectTrigger className="w-[110px] h-[47px] border border-[#645949] rounded-[8px]">
-                                                        <SelectValue />
-                                                    </SelectTrigger>
-                                                    <SelectContent className="h-[250px]  md:h-[300px] overflow-auto">
+                          {/* Phone Number */}
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Phone Number</FormLabel>
+              <div className="flex gap-2">
+                <FormField
+                  control={form.control}
+                  name="phoneCode"
+                  render={({ field: codeField }) => (
+                    <FormControl>
+                      <Select value={codeField.value} onValueChange={codeField.onChange}>
+                        <SelectTrigger className="w-[110px] h-[47px] border border-[#645949] rounded-[8px]">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent className="h-[250px]  md:h-[300px] overflow-auto">
                                                         {/* North America */}
                                                         <SelectItem value="+1">🇺🇸 +1</SelectItem>
                                                         {/* <SelectItem value="+1">🇨🇦 +1</SelectItem> */}
@@ -434,25 +414,21 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                                         <SelectItem value="+51">🇵🇪 +51</SelectItem>
 
                                                     </SelectContent>
-                                                </Select>
+                      </Select>
+                    </FormControl>
+                  )}
+                />
+                <FormControl className="flex-1">
+                  <Input {...field} placeholder="1712345678" className="flex-1 h-[47px] border border-[#645949] rounded-[8px]" />
+                </FormControl>
+              </div>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-                                                {/* Phone Number */}
-                                                <Input
-                                                    placeholder="1712345678"
-                                                    value={field.value?.replace(/^\+\d+\s*/, "") || ""}
-                                                    onChange={(e) => {
-                                                        const code = field.value?.match(/^\+\d+/)?.[0] || "+1"
-                                                        field.onChange(`${code} ${e.target.value}`)
-                                                    }}
-                                                    className="flex-1 h-[47px] border border-[#645949] rounded-[8px]"
-                                                />
-                                            </div>
-                                        </FormControl>
 
-                                        <FormMessage className="text-red-500" />
-                                    </FormItem>
-                                )}
-                            />
+
 
 
                         </div>
@@ -859,20 +835,6 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                 )}
                             />
 
-
-                            {/* <FormField
-                                control={form.control}
-                                name="socialMedia"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">Social media Link</FormLabel>
-                                        <FormControl>
-                                            <Input className="w-full h-[47px]  border border-[#645949] rounded-[8px] text-[#131313] placeholder:text-[#929292] text-sm font-normal leading-[150%]" placeholder="********" {...field} />
-                                        </FormControl>
-                                        <FormMessage className="text-red-500" />
-                                    </FormItem>
-                                )}
-                            /> */}
                         </div>
 
 
@@ -985,98 +947,6 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
 
                             </div>
                         )}
-
-
-                        {/* Conditional Education Fields */}
-                        {/* {inSchoolOrCollege === "yes" && (
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-                                <div className="md:col-span-2">
-                                    <FormField
-                                        control={form.control}
-                                        name="institute"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">
-                                                    School Name
-                                                </FormLabel>
-                                                <FormControl> */}
-
-                        {/* <Select
-                                                    onValueChange={field.onChange}
-                                                    value={field.value}
-                                                >
-                                                    <SelectTrigger className="w-full h-[48px] py-2 px-3 rounded-[8px] border border-[#645949] text-base font-medium leading-[120%] text-[#131313]">
-                                                        <SelectValue placeholder="Select" />
-                                                    </SelectTrigger>
-                                                    <SelectContent>
-                                                        <SelectItem value="middle school">Middle School</SelectItem>
-                                                        <SelectItem value="high school">High School</SelectItem>
-                                                        <SelectItem value="college or university">College / University</SelectItem>
-                                                    </SelectContent>
-                                                </Select> */}
-                        {/* 
-                                                 <Input
-                                                    placeholder="Write here"
-                                                    {...field}
-                                                    className="w-full h-[47px] border border-[#645949] rounded-[8px] text-[#131313] placeholder:text-[#929292]"
-                                                />  */}
-
-                        {/* <RadioGroup
-                                                        onValueChange={field.onChange}
-                                                        value={field.value}
-                                                        className="flex flex-row items-center space-x-8 pt-2"
-                                                    >
-                                                        <div className="flex items-center space-x-3">
-                                                            <RadioGroupItem value="middle school" id="middle school" />
-                                                            <label htmlFor="middle school" className="cursor-pointer text-base font-medium text-[#131313]">
-                                                                Middle School
-                                                            </label>
-                                                        </div>
-                                                        <div className="flex items-center space-x-3">
-                                                            <RadioGroupItem value="high school" id="high school" />
-                                                            <label htmlFor="high school" className="cursor-pointer text-base font-medium text-[#131313]">
-                                                                High School
-                                                            </label>
-                                                        </div>
-                                                        <div className="flex items-center space-x-3">
-                                                            <RadioGroupItem value="college / university" id="college / university" />
-                                                            <label htmlFor="college / university" className="cursor-pointer text-base font-medium text-[#131313]">
-                                                                College / University
-                                                            </label>
-                                                        </div>
-                                                    </RadioGroup>
-
-                                                </FormControl>
-                                                <FormMessage className="text-red-500" />
-                                            </FormItem>
-                                        )}
-                                    />
-                                </div>
-                                <div className="md:col-span-1">
-                                    <FormField
-                                        control={form.control}
-                                        name="gpa"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">
-                                                    GPA
-                                                </FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        placeholder="Write here"
-                                                        {...field}
-                                                        className="w-full h-[47px] border border-[#645949] rounded-[8px] text-[#131313] placeholder:text-[#929292]"
-                                                    />
-                                                </FormControl>
-                                                <FormMessage className="text-red-500" />
-                                            </FormItem>
-                                        )}
-                                    />
-                                </div>
-
-                                
-                            </div>
-                        )} */}
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
                             <FormField
