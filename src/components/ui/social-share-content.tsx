@@ -26,7 +26,7 @@ const SocialShareContent: React.FC<ShareComponentProps> = ({
 
   const shareUrl =
     typeof window !== "undefined"
-      ? `${process.env.NEXTAUTH_URL}/player-profile/${postId}`
+      ? `${window.location.origin}/player-profile/${postId}`
       : "";
 
   const toggleShare = () => setOpen((prev) => !prev);
