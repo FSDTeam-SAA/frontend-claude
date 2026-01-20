@@ -78,7 +78,7 @@ const SimilarPlayers = ({
                                         />
 
                                         <div>
-                                            <h4 className="text-lg md:text-xl text-[#131313] font-normal leading-[120%]">
+                                            <h4 className="text-sm md:text-base text-[#131313] font-normal leading-[120%]">
                                                 {item?.name || "N/A"}
                                             </h4>
 
@@ -101,12 +101,12 @@ const SimilarPlayers = ({
                                     <div className="hidden md:flex items-center gap-6">
                                         {/* Stat Item */}
                                         {[
-                                            { label: "Games", value: item?.game ?? 0 },
-                                            { label: "Goals", value: item?.goals ?? 0 },
-                                            { label: "AVG Rating", value: item?.avgRating ?? 0 },
+                                            { label: "Age", value: item?.age ?? 0 },
+                                            { label: "Positions", value: item?.position?.join(", ") ?? 0 },
+                                            { label: "Nationality", value: item?.nationality ?? 0 },
                                         ].map((stat, index) => (
                                             <div key={index} className="flex flex-col items-center gap-2">
-                                                <div className="w-12 h-12 rounded-full bg-white p-4 flex items-center justify-center text-base font-medium text-[#131313]">
+                                                <div className="w-16 h-12 rounded-full p-2 flex items-center justify-center text-base font-medium text-[#131313]">
                                                     {stat.value}
                                                 </div>
                                                 <p className="text-xm text-black leading-[150%]">

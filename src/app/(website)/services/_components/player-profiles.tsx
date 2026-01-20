@@ -14,7 +14,7 @@ const PlayerProfiles = () => {
                     <p className='text-sm md:text-base text-[#424242] font-normal leading-[150%] py-3 md:py-4'>Digital profile provides the player’s history, data, ratings, match logs, and club pathway just like professional tracking.</p>
                     <p className='text-sm md:text-base text-[#424242] font-normal leading-[150%] py-3 md:py-4'>It gives every player the visibility, credibility, and opportunities they need to advance in the modern game.</p>
 
-                    <h4 className='text-lg md:text-xl lg:text-2xl text-[#424242] leading-[150%] font-normal pb-6 md:pb-8 lg:pb-10'>The player profile is activated only after purchasing a data report.</h4>
+                    <h4 className='text-sm md:text-base text-[#424242] leading-[150%] font-normal pb-6 md:pb-8 lg:pb-10'>The player profile is activated only after purchasing a data report.</h4>
 
                     <Link
                         href="/profiles"

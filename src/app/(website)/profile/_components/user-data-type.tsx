@@ -43,6 +43,8 @@ export interface User {
   profileImage: string;
   verified: boolean;
   phone: string;
+  schoolName: string;
+  nationality: string;
   position: string[];
   playingVideo: string[];
 

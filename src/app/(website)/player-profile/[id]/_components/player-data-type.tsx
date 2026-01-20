@@ -35,6 +35,8 @@ export interface SimilarPlayer {
   game: number;
   avgRating: number;
   similarity: number;
+  nationality: string;
+  age: number;
 
   goals: number;
   assists: number;
@@ -100,7 +102,7 @@ export interface User {
   gpa: string;
   hight: string;
   weight: string;
-
+  schoolName: string;
   inSchoolOrCollege: boolean;
   institute: string;
   league: string;
