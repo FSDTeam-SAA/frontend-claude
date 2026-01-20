@@ -102,8 +102,8 @@ const SimilarPlayers = ({
                                         {/* Stat Item */}
                                         {[
                                             { label: "Age", value: item?.age ?? 0 },
-                                            { label: "Positions", value: item?.position?.join(", ") ?? 0 },
-                                            { label: "Nationality", value: item?.nationality ?? 0 },
+                                            { label: "Positions", value: item?.position?.join(", ") ?? "N/A" },
+                                            { label: "Nationality", value: item?.nationality ?? "N/A" },
                                         ].map((stat, index) => (
                                             <div key={index} className="flex flex-col items-center gap-2">
                                                 <div className="w-16 h-12 rounded-full p-2 flex items-center justify-center text-base font-medium text-[#131313]">

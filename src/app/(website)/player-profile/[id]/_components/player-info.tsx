@@ -2,9 +2,9 @@
 import Image from 'next/image';
 import moment from "moment";
 import React from 'react'
-import {
-    Share2
-} from 'lucide-react'
+// import {
+//     Share2
+// } from 'lucide-react'
 // import {
 //     Share2, Facebook,
 //     Instagram,
@@ -16,6 +16,7 @@ import PlayerInfoSkeleton from './profile-info-skeleton';
 import ErrorContainer from '@/components/shared/ErrorContainer/ErrorContainer';
 import { UserProfile } from './player-data-type';
 import ProfileFollow from './profile-follow';
+import SocialShareContent from '@/components/ui/social-share-content';
 // import SocialShareContent from '@/components/ui/social-share-content';
 
 const PlayerInfo = ({
@@ -65,8 +66,7 @@ const PlayerInfo = ({
 
     return (
         <div className='py-6'>
-            <div className="container grid grid-cols-1 md:gris-cols-2 lg:grid-cols-5 gap-6 bg-white rounded-[16px] p-6 shadow-[0px_4px_24px_0px_#00000014
-]">
+            <div className="container grid grid-cols-1 md:gris-cols-2 lg:grid-cols-5 gap-6 bg-white rounded-[16px] p-6 shadow-[0px_4px_24px_0px_#00000014]">
                 <div className="md:col-span-1">
                     <Image src={personalInfo?.profileImage || "/assets/images/no-user.jpg"} alt={personalInfo?.firstName || "profile image"} width={1000} height={1000} className="w-auto h-auto object-cover rounded-full" />
 
@@ -103,17 +103,17 @@ const PlayerInfo = ({
                         <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Category</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.category || "N/A"}</span></li>
                         <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Position</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.position?.map(p => p.toUpperCase()).join("-") || "N/A"}</span></li>
 
-                         <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Current Club</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.currentClub || "N/A"}</span></li>
+                        <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Current Club</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.currentClub || "N/A"}</span></li>
 
 
-                        
-                          {/* <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Agent</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.agent || "N/A"}</span></li> */}
+
+                        {/* <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Agent</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.agent || "N/A"}</span></li> */}
 
                         <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>Agent</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.agent || "N/A"}</span></li>
- 
-                       <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>School Name</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.schoolName || "N/A"}</span></li>
 
-                       
+                        <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>School Name</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.schoolName || "N/A"}</span></li>
+
+
 
                         <li className="flex flex-col gap-2"><span className='text-base font-normal text-[#616161] leading-[150%]'>GPA</span> <span className='text-lg md:text-xl text-[#131313] font-normal leading-[120%] '>{personalInfo?.gpa || "N/A"}</span></li>
 
@@ -207,17 +207,9 @@ const PlayerInfo = ({
 
                     <div className="flex flex-col gap-6 pt-6 md:pt-8 lg:pt-10">
 
-                        {/* <SocialShareContent
-                            id={firstPost.id}
-                            postId={firstPost.slug}
-                            categoryId={firstPost.cat_slug}
-                            subcategoryId={firstPost.sub_slug}
-                            heading={firstPost.heading}
-                            subHeading={firstPost.sub_heading}
-                            initialSharesCount={firstPost.shares_count || 0}
-                            token={token}
-                        /> */}
-                        <button className="w-full h-[40px] bg-primary flex items-center justify-center gap-2 rounded-full text-base font-normal leading-[120%]  text-white px-12 py-2">Share <Share2 className="text-white" /></button>
+                        <SocialShareContent
+                            postId={personalInfo?._id}
+                        />
                         <ProfileFollow id={personalInfo?._id} followers={personalInfo?.followers} />
                     </div>
                 </div>

@@ -194,7 +194,7 @@ const RegisterAsIndividualPlayerForm = ({
                     <FormItem>
                       <FormLabel className="text-base text-[#424242] leading-[150%] font-normal">Team Name *</FormLabel>
                       <FormControl>
-                        <Input className="h-[42px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " placeholder="Enter Player Name..." {...field} />
+                        <Input className="h-[42px] text-base leading-[120%] text-[#131313] font-normal border border-[#6C6C6C] rounded-[8px] placeholder:text-[#929292] " placeholder="Enter Team Name..." {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
