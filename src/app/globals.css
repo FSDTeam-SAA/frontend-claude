@@ -12,6 +12,14 @@
   background-color: #F4FFF4
 }
 
+.h_underline {
+  text-decoration-line: underline;
+  text-decoration-color: #079201;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px; 
+}
+
+
 
 
 @layer base {
