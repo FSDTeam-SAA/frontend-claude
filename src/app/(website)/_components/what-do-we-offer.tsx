@@ -8,7 +8,7 @@ const WhatDoWeOffer = () => {
 
             <div className='container grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 lg:gap-24'>
                 <div className='order-2 md:order-1 md:col-span-1 bg_color  shadow-[0px_4px_16px_0px_#00000029] rounded-[16px] flex flex-col justify-center py-6 px-8 md:px-16 lg:px-20'>
-                    <h3 className='text-2xl md:text-3xl lg:text-4xl text-[#131313] leading-[120%] font-normal'>What do we offer</h3>
+                    <h3 className='text-2xl md:text-3xl lg:text-4xl text-[#131313] h_underline leading-[120%] font-normal'>What do we offer</h3>
 
                     <ul className='py-6 md:py-10 lg:py-12 list-disc list-inside'>
                         <li className='text-base font-normal leading-[150%] text-[#616161]'>Specific technical and tactical data</li>

@@ -205,7 +205,7 @@ const PlayerInfo = ({
                         stars={averageRatings?.stars ?? 0}
                     />
 
-                    <div className="flex flex-col gap-6 pt-6 md:pt-8 lg:pt-10">
+                    <div className="flex flex-col gap-6 p-4 mt-6 border border-[#EBEBEB] rounded-[12px] shadow">
 
                         <SocialShareContent
                             postId={personalInfo?._id}

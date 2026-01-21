@@ -88,6 +88,11 @@ const faqItems = [
       answer:
         "You choose the match you want us to evaluate. We must be notified at least 72 hours before the match",
     },
+     {
+      question: "Upload your highlights videos",
+      answer:
+        "You are allowed up to 3 videos and you can update them at any time. The duration of each video can't exceed 3 minutes.",
+    },
   ];
 
   return (
