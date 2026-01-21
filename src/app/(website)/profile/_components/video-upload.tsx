@@ -361,7 +361,7 @@ export default function VideoUpload({ videos }: { videos: string[] }) {
 
   return (
     <Card className="w-full p-6 space-y-5 rounded-xl mt-24">
-      <h3 className="text-2xl font-bold text-center">
+      <h3 className="text-lg md:text-xl font-bold text-center">
         Upload your highlights videos
       </h3>
 
