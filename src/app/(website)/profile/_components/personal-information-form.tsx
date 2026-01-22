@@ -52,11 +52,11 @@ const formSchema = z.object({
     lastName: z.string().min(2, {
         message: "Last Name must be at least 2 characters.",
     }),
-      schoolName: z.string().min(2, {
+    schoolName: z.string().min(2, {
         message: "School Name must be at least 2 characters.",
     }),
     phoneCode: z.string().min(1),
-  phone: z.string().min(6),
+    phone: z.string().min(6),
     // phone: z.string().min(7, { message: "Phone number is too short." }),
     // phone: z
     //     .string()
@@ -84,7 +84,7 @@ const formSchema = z.object({
             url: z.string().url().optional(),
         })
     ).optional(),
-    
+
     citizenship: z.string().min(2, {
         message: "citizenship must be at least 2 characters.",
     }),
@@ -178,7 +178,7 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
             // phone: user?.phone || "",
             // phone: `${defaultCountryCode} ${defaultNumber}`.trim(),
             phoneCode: user?.phoneCode || "+880",
-      phone: user?.phone || "",
+            phone: user?.phone || "",
             gender: user?.gender || "",
             hight: user?.hight || "",
             weight: user?.weight || "",
@@ -195,7 +195,7 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                     url: item.url,
                 }))
                 : [],
-            citizenship: user?.citizenship || "",  
+            citizenship: user?.citizenship || "",
             nationality: user?.nationality || "",
             currentClub: user?.currentClub || "",
             league: user?.league || "",
@@ -309,6 +309,19 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                             />
                             <FormField
                                 control={form.control}
+                                name="nationality"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">Nationality</FormLabel>
+                                        <FormControl>
+                                            <Input className="w-full h-[47px]  border border-[#645949] rounded-[8px] text-[#131313] placeholder:text-[#929292] text-sm font-normal leading-[150%]" placeholder="AAAAAA" {...field} />
+                                        </FormControl>
+                                        <FormMessage className="text-red-500" />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
                                 name="jerseyNumber"
                                 render={({ field }) => (
                                     <FormItem>
@@ -320,7 +333,109 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                     </FormItem>
                                 )}
                             />
+                           
+
+
+
+
+                            {/* Phone Number */}
                             <FormField
+                                control={form.control}
+                                name="phone"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Phone Number</FormLabel>
+                                        <div className="flex gap-2">
+                                            <FormField
+                                                control={form.control}
+                                                name="phoneCode"
+                                                render={({ field: codeField }) => (
+                                                    <FormControl>
+                                                        <Select value={codeField.value} onValueChange={codeField.onChange}>
+                                                            <SelectTrigger className="w-[110px] h-[47px] border border-[#645949] rounded-[8px]">
+                                                                <SelectValue />
+                                                            </SelectTrigger>
+                                                            <SelectContent className="h-[250px]  md:h-[300px] overflow-auto">
+                                                                {/* North America */}
+                                                                <SelectItem value="+1">🇺🇸 +1</SelectItem>
+                                                                {/* <SelectItem value="+1">🇨🇦 +1</SelectItem> */}
+
+                                                                {/* <SelectItem value="+1">🇺🇸/🇨🇦 +1</SelectItem> */}
+
+
+                                                                {/* Europe */}
+                                                                <SelectItem value="+44">🇬🇧 +44</SelectItem>
+                                                                <SelectItem value="+33">🇫🇷 +33</SelectItem>
+                                                                <SelectItem value="+49">🇩🇪 +49</SelectItem>
+                                                                <SelectItem value="+39">🇮🇹 +39</SelectItem>
+                                                                <SelectItem value="+34">🇪🇸 +34</SelectItem>
+                                                                <SelectItem value="+31">🇳🇱 +31</SelectItem>
+                                                                <SelectItem value="+46">🇸🇪 +46</SelectItem>
+                                                                <SelectItem value="+41">🇨🇭 +41</SelectItem>
+                                                                <SelectItem value="+48">🇵🇱 +48</SelectItem>
+                                                                <SelectItem value="+351">🇵🇹 +351</SelectItem>
+
+                                                                {/* Asia */}
+                                                                <SelectItem value="+880">🇧🇩 +880</SelectItem>
+                                                                <SelectItem value="+91">🇮🇳 +91</SelectItem>
+                                                                <SelectItem value="+92">🇵🇰 +92</SelectItem>
+                                                                <SelectItem value="+94">🇱🇰 +94</SelectItem>
+                                                                <SelectItem value="+86">🇨🇳 +86</SelectItem>
+                                                                <SelectItem value="+81">🇯🇵 +81</SelectItem>
+                                                                <SelectItem value="+82">🇰🇷 +82</SelectItem>
+                                                                <SelectItem value="+62">🇮🇩 +62</SelectItem>
+                                                                <SelectItem value="+60">🇲🇾 +60</SelectItem>
+                                                                <SelectItem value="+66">🇹🇭 +66</SelectItem>
+                                                                <SelectItem value="+63">🇵🇭 +63</SelectItem>
+
+                                                                {/* Middle East */}
+                                                                <SelectItem value="+971">🇦🇪 +971</SelectItem>
+                                                                <SelectItem value="+966">🇸🇦 +966</SelectItem>
+                                                                <SelectItem value="+974">🇶🇦 +974</SelectItem>
+                                                                <SelectItem value="+965">🇰🇼 +965</SelectItem>
+                                                                <SelectItem value="+968">🇴🇲 +968</SelectItem>
+                                                                <SelectItem value="+972">🇮🇱 +972</SelectItem>
+
+                                                                {/* Africa */}
+                                                                <SelectItem value="+20">🇪🇬 +20</SelectItem>
+                                                                <SelectItem value="+234">🇳🇬 +234</SelectItem>
+                                                                <SelectItem value="+254">🇰🇪 +254</SelectItem>
+                                                                <SelectItem value="+27">🇿🇦 +27</SelectItem>
+                                                                <SelectItem value="+212">🇲🇦 +212</SelectItem>
+
+                                                                {/* Oceania */}
+                                                                <SelectItem value="+61">🇦🇺 +61</SelectItem>
+                                                                <SelectItem value="+64">🇳🇿 +64</SelectItem>
+
+                                                                {/* South America */}
+                                                                <SelectItem value="+55">🇧🇷 +55</SelectItem>
+                                                                <SelectItem value="+54">🇦🇷 +54</SelectItem>
+                                                                <SelectItem value="+57">🇨🇴 +57</SelectItem>
+                                                                <SelectItem value="+56">🇨🇱 +56</SelectItem>
+                                                                <SelectItem value="+51">🇵🇪 +51</SelectItem>
+
+                                                            </SelectContent>
+                                                        </Select>
+                                                    </FormControl>
+                                                )}
+                                            />
+                                            <FormControl className="flex-1">
+                                                <Input {...field} placeholder="1712345678" className="flex-1 h-[47px] border border-[#645949] rounded-[8px]" />
+                                            </FormControl>
+                                        </div>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+
+
+
+
+
+                        </div>
+
+                        <div>
+                             <FormField
                                 control={form.control}
                                 name="email"
                                 render={({ field }) => (
@@ -333,104 +448,6 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                     </FormItem>
                                 )}
                             />
-
-
-                         
-
-                          {/* Phone Number */}
-        <FormField
-          control={form.control}
-          name="phone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Phone Number</FormLabel>
-              <div className="flex gap-2">
-                <FormField
-                  control={form.control}
-                  name="phoneCode"
-                  render={({ field: codeField }) => (
-                    <FormControl>
-                      <Select value={codeField.value} onValueChange={codeField.onChange}>
-                        <SelectTrigger className="w-[110px] h-[47px] border border-[#645949] rounded-[8px]">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent className="h-[250px]  md:h-[300px] overflow-auto">
-                                                        {/* North America */}
-                                                        <SelectItem value="+1">🇺🇸 +1</SelectItem>
-                                                        {/* <SelectItem value="+1">🇨🇦 +1</SelectItem> */}
-
-                                                        {/* <SelectItem value="+1">🇺🇸/🇨🇦 +1</SelectItem> */}
-
-
-                                                        {/* Europe */}
-                                                        <SelectItem value="+44">🇬🇧 +44</SelectItem>
-                                                        <SelectItem value="+33">🇫🇷 +33</SelectItem>
-                                                        <SelectItem value="+49">🇩🇪 +49</SelectItem>
-                                                        <SelectItem value="+39">🇮🇹 +39</SelectItem>
-                                                        <SelectItem value="+34">🇪🇸 +34</SelectItem>
-                                                        <SelectItem value="+31">🇳🇱 +31</SelectItem>
-                                                        <SelectItem value="+46">🇸🇪 +46</SelectItem>
-                                                        <SelectItem value="+41">🇨🇭 +41</SelectItem>
-                                                        <SelectItem value="+48">🇵🇱 +48</SelectItem>
-                                                        <SelectItem value="+351">🇵🇹 +351</SelectItem>
-
-                                                        {/* Asia */}
-                                                        <SelectItem value="+880">🇧🇩 +880</SelectItem>
-                                                        <SelectItem value="+91">🇮🇳 +91</SelectItem>
-                                                        <SelectItem value="+92">🇵🇰 +92</SelectItem>
-                                                        <SelectItem value="+94">🇱🇰 +94</SelectItem>
-                                                        <SelectItem value="+86">🇨🇳 +86</SelectItem>
-                                                        <SelectItem value="+81">🇯🇵 +81</SelectItem>
-                                                        <SelectItem value="+82">🇰🇷 +82</SelectItem>
-                                                        <SelectItem value="+62">🇮🇩 +62</SelectItem>
-                                                        <SelectItem value="+60">🇲🇾 +60</SelectItem>
-                                                        <SelectItem value="+66">🇹🇭 +66</SelectItem>
-                                                        <SelectItem value="+63">🇵🇭 +63</SelectItem>
-
-                                                        {/* Middle East */}
-                                                        <SelectItem value="+971">🇦🇪 +971</SelectItem>
-                                                        <SelectItem value="+966">🇸🇦 +966</SelectItem>
-                                                        <SelectItem value="+974">🇶🇦 +974</SelectItem>
-                                                        <SelectItem value="+965">🇰🇼 +965</SelectItem>
-                                                        <SelectItem value="+968">🇴🇲 +968</SelectItem>
-                                                        <SelectItem value="+972">🇮🇱 +972</SelectItem>
-
-                                                        {/* Africa */}
-                                                        <SelectItem value="+20">🇪🇬 +20</SelectItem>
-                                                        <SelectItem value="+234">🇳🇬 +234</SelectItem>
-                                                        <SelectItem value="+254">🇰🇪 +254</SelectItem>
-                                                        <SelectItem value="+27">🇿🇦 +27</SelectItem>
-                                                        <SelectItem value="+212">🇲🇦 +212</SelectItem>
-
-                                                        {/* Oceania */}
-                                                        <SelectItem value="+61">🇦🇺 +61</SelectItem>
-                                                        <SelectItem value="+64">🇳🇿 +64</SelectItem>
-
-                                                        {/* South America */}
-                                                        <SelectItem value="+55">🇧🇷 +55</SelectItem>
-                                                        <SelectItem value="+54">🇦🇷 +54</SelectItem>
-                                                        <SelectItem value="+57">🇨🇴 +57</SelectItem>
-                                                        <SelectItem value="+56">🇨🇱 +56</SelectItem>
-                                                        <SelectItem value="+51">🇵🇪 +51</SelectItem>
-
-                                                    </SelectContent>
-                      </Select>
-                    </FormControl>
-                  )}
-                />
-                <FormControl className="flex-1">
-                  <Input {...field} placeholder="1712345678" className="flex-1 h-[47px] border border-[#645949] rounded-[8px]" />
-                </FormControl>
-              </div>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-
-
-
-
                         </div>
 
 
@@ -474,7 +491,7 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                 name="dob"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="text-base font-semibold text-black leading-[120%]">
+                                        <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">
                                             Date Of Birth
                                         </FormLabel>
                                         <Popover>
@@ -962,19 +979,7 @@ const PersonalInformationForm: React.FC<PersonalInformationFormProps> = ({ user 
                                     </FormItem>
                                 )}
                             />
-                            <FormField
-                                control={form.control}
-                                name="nationality"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel className="text-base font-normal leading-[150%] text-[#131313]">Nationality</FormLabel>
-                                        <FormControl>
-                                            <Input className="w-full h-[47px]  border border-[#645949] rounded-[8px] text-[#131313] placeholder:text-[#929292] text-sm font-normal leading-[150%]" placeholder="AAAAAA" {...field} />
-                                        </FormControl>
-                                        <FormMessage className="text-red-500" />
-                                    </FormItem>
-                                )}
-                            />
+
                         </div>
 
 
