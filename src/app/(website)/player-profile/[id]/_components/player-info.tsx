@@ -70,7 +70,18 @@ const PlayerInfo = ({
                 <div className="md:col-span-1">
                     <Image src={personalInfo?.profileImage || "/assets/images/no-user.jpg"} alt={personalInfo?.firstName || "profile image"} width={1000} height={1000} className="w-auto h-auto object-cover rounded-full" />
 
-                    <p className="text-base md:text-lg lg:text-xl font-semibold text-black pt-4 leading-[150%] text-center">{personalInfo?.firstName} {personalInfo?.lastName}</p>
+                    <p className="text-base md:text-lg lg:text-xl font-semibold text-black pt-2 leading-[150%] text-center">{personalInfo?.firstName} {personalInfo?.lastName}</p>
+
+                    <div>
+
+                    <div className="flex flex-col gap-4 p-4 mt-2 border border-[#EBEBEB] rounded-[12px] shadow">
+
+                        <SocialShareContent
+                            postId={personalInfo?._id}
+                        />
+                        <ProfileFollow id={personalInfo?._id} followers={personalInfo?.followers} />
+                    </div>
+                    </div>
 
                 </div>
                 <div className="md:col-span-3">
@@ -205,13 +216,13 @@ const PlayerInfo = ({
                         stars={averageRatings?.stars ?? 0}
                     />
 
-                    <div className="flex flex-col gap-6 p-4 mt-6 border border-[#EBEBEB] rounded-[12px] shadow">
+                    {/* <div className="flex flex-col gap-6 p-4 mt-6 border border-[#EBEBEB] rounded-[12px] shadow">
 
                         <SocialShareContent
                             postId={personalInfo?._id}
                         />
                         <ProfileFollow id={personalInfo?._id} followers={personalInfo?.followers} />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

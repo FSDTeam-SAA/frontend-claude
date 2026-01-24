@@ -7,7 +7,8 @@ const WhatDoWeOffer = () => {
         <div className='py-6 md:py-12 lg:py-16'>
 
             <div className='container grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 lg:gap-24'>
-                <div className='order-2 md:order-1 md:col-span-1 bg_color  shadow-[0px_4px_16px_0px_#00000029] rounded-[16px] flex flex-col justify-center py-6 px-8 md:px-16 lg:px-20'>
+                <div className="order-2 md:order-1 md:col-span-1 flex items-center">
+                    <div className=' bg_color shadow-[0px_4px_16px_0px_#00000029] rounded-[16px] flex flex-col justify-center py-6 md:py-10 lg:py-14 px-8 md:px-16 lg:px-20'>
                     <h3 className='text-2xl md:text-3xl lg:text-4xl text-[#131313] h_underline leading-[120%] font-normal'>What do we offer</h3>
 
                     <ul className='py-6 md:py-10 lg:py-12 list-disc list-inside'>
@@ -23,8 +24,9 @@ const WhatDoWeOffer = () => {
                     </Link>
                     </div>
                 </div>
+                </div>
                 <div className='order-1 md:order-2 md:col-span-1'>
-                    <Image src="/assets/images/what-do-we-offer.png" alt="What Do We Offer" width={1000} height={1000} className='w-full h-[360px] md:h-[440px] lg:h-[520px]' />
+                    <Image src="/assets/images/what_do_we_offer.png" alt="What Do We Offer" width={1000} height={1000} className='w-full h-[360px] md:h-[440px] lg:h-[684px]' />
                 </div>
             </div>
         </div>
