@@ -40,7 +40,7 @@ const ServiceData = () => {
                     </Link>
                 </div>
                 <div className="md:col-span-1">
-                    <Image src="/assets/images/data.jpg" alt="data" width={500} height={500} className='w-full h-[400px] md:h-[550px] lg:h-[778px] object-cover  !rounded-[16px]  ' />
+                    <Image src="/assets/images/data.jpeg" alt="data" width={500} height={500} className='w-full h-[400px] md:h-[550px] lg:h-[778px] object-contain  !rounded-[16px]  ' />
                 </div>
             </div>
         </div>

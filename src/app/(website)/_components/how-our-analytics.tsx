@@ -7,11 +7,11 @@ const HowOurAnalytics = () => {
         <div className='py-6 md:py-10 lg:py-16 bg_color'>
             <div className="container grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-10 lg:gap-20">
                 <div className='md:col-span-2'>
-                    <Image src="/assets/images/new-image1.png" alt="how our analytics" width={1000} height={1000} className='w-[622px] h-[360px] md:h-[500px] lg:h-[580px] object-fill rounded-[16px]' />
+                    <Image src="/assets/images/how_our_analysic.jpeg" alt="how our analytics" width={1000} height={1000} className='w-[622px] h-[360px] md:h-[500px] lg:h-[580px] object-fill rounded-[16px]' />
                 </div>
                 <div className='md:col-span-3 h-full flex flex-col justify-center'>
-                    <h3 className='hidden md:block text-2xl md:text-3xl lg:text-4xl text-[#131313] font-normal leading-[120%]'>How Our Analytics Process Works</h3>
-                    <h3 className='block md:hidden text-2xl md:text-3xl lg:text-4xl text-[#131313] font-normal leading-[120%]'>Our Analytics Process</h3>
+                    <h3 className='text-2xl md:text-3xl lg:text-4xl text-[#131313] font-normal leading-[120%]'>How Our Analytics Process Works</h3>
+                    {/* <h3 className='block md:hidden text-2xl md:text-3xl lg:text-4xl text-[#131313] font-normal leading-[120%]'>Our Analytics Process</h3> */}
                     <p className='text-sm md:text-base text-[#616161] font-normal leading-[120%] pt-4 md:pt-5'>To activate your profile, you must first register and purchase our data service to receive your report.</p>
 
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-3 md:py-5 lg:py-7'>
